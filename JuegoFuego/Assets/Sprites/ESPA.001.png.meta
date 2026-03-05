@@ -1,0 +1,1028 @@
+fileFormatVersion: 2
+guid: 3af61eace04a543998754667aed82aef
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8644376424818130982
+    second: ESPA.001_0
+  - first:
+      213: 3981474302007870767
+    second: ESPA.001_1
+  - first:
+      213: -878777486264285043
+    second: ESPA.001_2
+  - first:
+      213: -5682087605899228897
+    second: ESPA.001_3
+  - first:
+      213: 3169342345906823324
+    second: ESPA.001_4
+  - first:
+      213: 5967862685675590447
+    second: ESPA.001_5
+  - first:
+      213: 2838249248911855179
+    second: ESPA.001_6
+  - first:
+      213: 5974736270464575218
+    second: ESPA.001_7
+  - first:
+      213: 7330020174309912348
+    second: ESPA.001_8
+  - first:
+      213: 3964305349927283720
+    second: ESPA.001_9
+  - first:
+      213: 643082348971199574
+    second: ESPA.001_10
+  - first:
+      213: 3293016316978015748
+    second: ESPA.001_11
+  - first:
+      213: 8543411931977203310
+    second: ESPA.001_12
+  - first:
+      213: -3828158530757090264
+    second: ESPA.001_13
+  - first:
+      213: 6828713101471100564
+    second: ESPA.001_14
+  - first:
+      213: -1025464229042134286
+    second: ESPA.001_15
+  - first:
+      213: 3472120498043599176
+    second: ESPA.001_16
+  - first:
+      213: 3004002207086522291
+    second: ESPA.001_17
+  - first:
+      213: 2821136779718961080
+    second: ESPA.001_18
+  - first:
+      213: -8556953666330819564
+    second: ESPA.001_19
+  - first:
+      213: -7633135077046610896
+    second: ESPA.001_20
+  - first:
+      213: 8523810287173252271
+    second: ESPA.001_21
+  - first:
+      213: 5511309253762323812
+    second: ESPA.001_22
+  - first:
+      213: 7332989851708482718
+    second: ESPA.001_23
+  - first:
+      213: -9132341332139145205
+    second: ESPA.001_24
+  - first:
+      213: 3520713457221009309
+    second: ESPA.001_25
+  - first:
+      213: -3638050845371404468
+    second: ESPA.001_26
+  - first:
+      213: -2984940604084954964
+    second: ESPA.001_27
+  - first:
+      213: 297787618101834967
+    second: ESPA.001_28
+  - first:
+      213: 1786604264249445927
+    second: ESPA.001_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ESPA.001_0
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 859
+        width: 122
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 620cb0afe8ef6f770800000000000000
+      internalID: 8644376424818130982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_1
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 859
+        width: 111
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25868d68c9014730800000000000000
+      internalID: 3981474302007870767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_2
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 859
+        width: 124
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d884b9e3884fdc3f0800000000000000
+      internalID: -878777486264285043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_3
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 857
+        width: 127
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f190abb6d6b2521b0800000000000000
+      internalID: -5682087605899228897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_4
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 857
+        width: 130
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c90216b5214cbfb20800000000000000
+      internalID: 3169342345906823324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_5
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 859
+        width: 122
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2390085e7b12d250800000000000000
+      internalID: 5967862685675590447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_6
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 859
+        width: 146
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e096977ac736720800000000000000
+      internalID: 2838249248911855179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_7
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 857
+        width: 123
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f6eea38bf68ae250800000000000000
+      internalID: 5974736270464575218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_8
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 859
+        width: 111
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1f603e238679b560800000000000000
+      internalID: 7330020174309912348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_9
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 857
+        width: 126
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80ca89346ba040730800000000000000
+      internalID: 3964305349927283720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_10
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 445
+        width: 258
+        height: 147
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65c80cb3dfface800800000000000000
+      internalID: 643082348971199574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_11
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 374
+        width: 55
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40e2a05a4e423bd20800000000000000
+      internalID: 3293016316978015748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_12
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 374
+        width: 50
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6eb55f13eb409670800000000000000
+      internalID: 8543411931977203310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_13
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 373
+        width: 59
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 824a7564916afdac0800000000000000
+      internalID: -3828158530757090264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_14
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 374
+        width: 55
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49ead3eb26674ce50800000000000000
+      internalID: 6828713101471100564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_15
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 374
+        width: 50
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f2e21287b1d4c1f0800000000000000
+      internalID: -1025464229042134286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_16
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 373
+        width: 57
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 849bd3762337f2030800000000000000
+      internalID: 3472120498043599176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_17
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 374
+        width: 65
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bfa1e9671c50b920800000000000000
+      internalID: 3004002207086522291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_18
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 374
+        width: 56
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b720f144f0b62720800000000000000
+      internalID: 2821136779718961080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_19
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 138
+        width: 76
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41400e62af79f3980800000000000000
+      internalID: -8556953666330819564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_20
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 140
+        width: 67
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 034101ae618a11690800000000000000
+      internalID: -7633135077046610896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_21
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 140
+        width: 65
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa438cb8b48aa4670800000000000000
+      internalID: 8523810287173252271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_22
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 140
+        width: 67
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46593dde09a1c7c40800000000000000
+      internalID: 5511309253762323812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_23
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 138
+        width: 79
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e94e0a41b6304c560800000000000000
+      internalID: 7332989851708482718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_24
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 138
+        width: 79
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b088a3291f7634180800000000000000
+      internalID: -9132341332139145205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_25
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 140
+        width: 26
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9f789d5c361cd030800000000000000
+      internalID: 3520713457221009309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_26
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 138
+        width: 78
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4fe3d6080c038dc0800000000000000
+      internalID: -3638050845371404468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_27
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 140
+        width: 74
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca850e1e55c5396d0800000000000000
+      internalID: -2984940604084954964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_28
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 140
+        width: 88
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d4387bc244f12400800000000000000
+      internalID: 297787618101834967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_29
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 140
+        width: 75
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72e49cccc1b4bc810800000000000000
+      internalID: 1786604264249445927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_30
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 858
+        width: 1328
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b517e84f1c7c44158011358fb2861d2
+      internalID: -1148324856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_31
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 446
+        width: 256
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3533b1cde4cde461ea98263a92236fa5
+      internalID: 153255334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_32
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 374
+        width: 459
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473521b552339479bbf78ec1bca7cfff
+      internalID: 1782151861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ESPA.001_33
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 139
+        width: 825
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52015f3384f2d41818cc9fc51a96b7eb
+      internalID: -88382043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 24a10d30b64ca4bfebb081c957cb8d66
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ESPA.001_0: 8644376424818130982
+      ESPA.001_1: 3981474302007870767
+      ESPA.001_10: 643082348971199574
+      ESPA.001_11: 3293016316978015748
+      ESPA.001_12: 8543411931977203310
+      ESPA.001_13: -3828158530757090264
+      ESPA.001_14: 6828713101471100564
+      ESPA.001_15: -1025464229042134286
+      ESPA.001_16: 3472120498043599176
+      ESPA.001_17: 3004002207086522291
+      ESPA.001_18: 2821136779718961080
+      ESPA.001_19: -8556953666330819564
+      ESPA.001_2: -878777486264285043
+      ESPA.001_20: -7633135077046610896
+      ESPA.001_21: 8523810287173252271
+      ESPA.001_22: 5511309253762323812
+      ESPA.001_23: 7332989851708482718
+      ESPA.001_24: -9132341332139145205
+      ESPA.001_25: 3520713457221009309
+      ESPA.001_26: -3638050845371404468
+      ESPA.001_27: -2984940604084954964
+      ESPA.001_28: 297787618101834967
+      ESPA.001_29: 1786604264249445927
+      ESPA.001_3: -5682087605899228897
+      ESPA.001_30: -1148324856
+      ESPA.001_31: 153255334
+      ESPA.001_32: 1782151861
+      ESPA.001_33: -88382043
+      ESPA.001_4: 3169342345906823324
+      ESPA.001_5: 5967862685675590447
+      ESPA.001_6: 2838249248911855179
+      ESPA.001_7: 5974736270464575218
+      ESPA.001_8: 7330020174309912348
+      ESPA.001_9: 3964305349927283720
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
