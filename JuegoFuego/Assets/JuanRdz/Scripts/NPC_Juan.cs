@@ -1,91 +1,114 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class NPC : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
-    public GameObject dialoguePanel;
-    public TMP_Text dialogueText;
-    public TMP_Text nameText;
-    public Image portraitImage;
+    private DialogueController_JuanRdz dialogueUI;
 
     private int dialogueIndex;
     private bool isTyping;
     private bool isDialogueActive;
 
+    void Start()
+    {
+        dialogueUI = DialogueController_JuanRdz.Instance;
+    }
+
     public bool CanInteract()
     {
-        return !isDialogueActive;
+        return true;
     }
 
     public void Interact()
     {
-        if (dialogueData == null)
+        if (dialogueData == null || dialogueUI == null)
             return;
 
-        if (isDialogueActive)
-        {
-            if (!isTyping)
-            {
-                NextLine();
-            }
-        }
-        else
+        if (!isDialogueActive)
         {
             StartDialogue();
+            return;
         }
-    } 
+
+        // Si hay una decisión en esta línea, no avanzar con Z
+        if (HasChoiceAtCurrentLine())
+        {
+            return;
+        }
+
+        // Si todavía se está escribiendo, completar la línea
+        if (isTyping)
+        {
+            StopAllCoroutines();
+            dialogueUI.SetDialogueText(dialogueData.dialogueLines[dialogueIndex]);
+            isTyping = false;
+            return;
+        }
+
+        // Si no hay decisión y ya terminó de escribirse, avanzar
+        NextLine();
+    }
 
     private void StartDialogue()
     {
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        nameText.SetText(dialogueData.npcName);
-        portraitImage.sprite = dialogueData.npcPortrait;
-        dialoguePanel.SetActive(true);
+        dialogueUI.SetNPCInfo(dialogueData.npcName, dialogueData.npcPortrait);
+        dialogueUI.ShowDialogueUI(true);
+        dialogueUI.ClearChoices();
 
-        StartCoroutine(TypeLine());
+        DisplayCurrentLine();
     }
 
     private void NextLine()
     {
-        if (isTyping)
+        dialogueUI.ClearChoices();
+
+        dialogueIndex++;
+
+        if (dialogueIndex < dialogueData.dialogueLines.Length)
         {
-            StopAllCoroutines();
-            dialogueText.SetText(dialogueData.dialogueLines[dialogueIndex]);
-            isTyping = false;
+            DisplayCurrentLine();
         }
         else
         {
-            dialogueIndex++;
-
-            if (dialogueIndex < dialogueData.dialogueLines.Length)
-            {
-                StartCoroutine(TypeLine());
-            }
-            else
-            {
-                EndDialogue();
-            }
+            EndDialogue();
         }
+    }
+
+    private void DisplayCurrentLine()
+    {
+        StopAllCoroutines();
+        dialogueUI.ClearChoices();
+        StartCoroutine(TypeLine());
     }
 
     private IEnumerator TypeLine()
     {
         isTyping = true;
-        dialogueText.SetText("");
+        dialogueUI.SetDialogueText("");
 
-        foreach (char letter in dialogueData.dialogueLines[dialogueIndex])
+        string currentLine = dialogueData.dialogueLines[dialogueIndex];
+
+        foreach (char letter in currentLine)
         {
-            dialogueText.text += letter;
+            dialogueUI.SetDialogueText(dialogueUI.dialogueText.text + letter);
             yield return new WaitForSeconds(dialogueData.typingSpeed);
         }
 
         isTyping = false;
 
+        // Cuando termina de escribir, revisar si esta línea tiene decisiones
+        DialogueChoice currentChoice = GetChoiceForCurrentLine();
+        if (currentChoice != null)
+        {
+            DisplayChoices(currentChoice);
+            yield break;
+        }
+
+        // Si no hay decisiones, revisar auto avance
         if (dialogueData.autoProgressLines != null &&
             dialogueData.autoProgressLines.Length > dialogueIndex &&
             dialogueData.autoProgressLines[dialogueIndex])
@@ -95,11 +118,54 @@ public class NPC : MonoBehaviour, IInteractable
         }
     }
 
+    private DialogueChoice GetChoiceForCurrentLine()
+    {
+        if (dialogueData.Choices == null)
+            return null;
+
+        foreach (DialogueChoice dialogueChoice in dialogueData.Choices)
+        {
+            if (dialogueChoice.dialogueIndex == dialogueIndex)
+            {
+                return dialogueChoice;
+            }
+        }
+
+        return null;
+    }
+
+    private bool HasChoiceAtCurrentLine()
+    {
+        return GetChoiceForCurrentLine() != null;
+    }
+
+    private void DisplayChoices(DialogueChoice dialogueChoice)
+    {
+        dialogueUI.ClearChoices();
+
+        for (int i = 0; i < dialogueChoice.choices.Length; i++)
+        {
+            int nextIndex = dialogueChoice.nextDialogueIndexes[i];
+            string choiceText = dialogueChoice.choices[i];
+
+            dialogueUI.CreateChoiceButton(choiceText, () => ChooseOption(nextIndex));
+        }
+    }
+
+    private void ChooseOption(int nextIndex)
+    {
+        dialogueIndex = nextIndex;
+        dialogueUI.ClearChoices();
+        DisplayCurrentLine();
+    }
+
     public void EndDialogue()
     {
         StopAllCoroutines();
         isDialogueActive = false;
-        dialogueText.SetText("");
-        dialoguePanel.SetActive(false);
+        isTyping = false;
+        dialogueUI.ClearChoices();
+        dialogueUI.SetDialogueText("");
+        dialogueUI.ShowDialogueUI(false);
     }
 }
