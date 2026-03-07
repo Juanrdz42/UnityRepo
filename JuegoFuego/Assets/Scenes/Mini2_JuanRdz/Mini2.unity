@@ -236,8 +236,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 804875169
-  m_SortingLayer: 3
+  m_SortingLayerID: -242074451
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -37570,8 +37570,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1337528557
-  m_SortingLayer: 4
+  m_SortingLayerID: -1452682889
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -160925531, guid: 6b6df0f353d44eb44b82b5cd50e825d8, type: 3}
@@ -38092,8 +38092,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 1337528557
-  m_SortingLayer: 4
+  m_SortingLayerID: -1452682889
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 674140495, guid: 17222695ec6a63442b9386d075317310, type: 3}
@@ -38382,7 +38382,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 168684617
+  m_SortingLayerID: -1116819147
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
@@ -46012,7 +46012,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000eb31a10f8f057fdea16bf92fed10b94f252aae7b49ec0d0a
+  m_ApplyToSortingLayers: 00000000eb31a10f8f057fdea16bf92fed10b94f252aae7b49ec0d0a4110203d45c8407bad3c92f19719f37735b16ebd77d169a9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -46212,7 +46212,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 2075011621
+  m_SortingLayerID: 2012420503
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
@@ -58270,7 +58270,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -562100849
+  m_SortingLayerID: 2067843141
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
@@ -81192,7 +81192,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 262222315
+  m_SortingLayerID: 1025511489
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
