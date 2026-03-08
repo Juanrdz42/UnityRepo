@@ -15,20 +15,23 @@ MonoBehaviour:
   npcName: Explorador
   npcPortrait: {fileID: 21300000, guid: 8bbbdc64a79aa4c7fad407a203745d36, type: 3}
   dialogueLines:
-  - "\xA1Hola, Bienvenido!"
-  - "\xBFComo estas?"
+  - "\xA1Hola! Bienvenido a la estaci\xF3n biol\xF3gica."
+  - "Aqu\xED estudiamos y observamos animales en diferentes ecosistemas. "
   - "\xBFTe gustan los biomas terrestres o acuaticos?"
-  - "Tienes Suerte, hay una secci\xF3n del bosque con biomas diversos"
-  - "Tienes Suerte, hay un lago muy grande aqu\xED"
+  - "\xBFTe gustar\xEDa explorar un bioma terrestre o uno acu\xE1tico?"
+  - "Excelente elecci\xF3n. En el bosque podr\xE1s encontrar distintos animales si
+    capturas el momento perfecto."
+  - "Perfecto. Dir\xEDgete al lago y prep\xE1rate para fotografiar las especies que
+    aparezcan."
   typingSpeed: 0.05
   voiceSound: {fileID: 8300000, guid: da212f78f9db343288681c147c3ab555, type: 3}
   voicePitch: 1
   autoProgressLines: 0101010000
-  endDialogueLines: 0000000101
+  endDialogueLines: 000000010101
   autoProgressDelay: 1
   Choices:
   - dialogueIndex: 2
     choices:
     - Terrestres
     - Acuaticos
-    nextDialogueIndexes: 0300000004000000
+    nextDialogueIndexes: 0400000005000000

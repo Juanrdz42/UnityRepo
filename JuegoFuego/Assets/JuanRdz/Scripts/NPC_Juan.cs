@@ -3,12 +3,20 @@ using System.Collections;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    public NPCDialogue dialogueData;
+    [Header("Dialogues")]
+    public NPCDialogue firstDialogueData;
+    public NPCDialogue readyDialogueTerrestre;
+    public NPCDialogue readyDialogueAcuatico;
+
+    private NPCDialogue currentDialogueData;
     private DialogueController_JuanRdz dialogueUI;
 
     private int dialogueIndex;
     private bool isTyping;
     private bool isDialogueActive;
+
+    private bool hasChosenBiome = false;
+    private string selectedBiome = "";
 
     void Start()
     {
@@ -22,40 +30,59 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (dialogueData == null || dialogueUI == null)
+        if (dialogueUI == null)
             return;
 
         if (!isDialogueActive)
         {
+            SelectDialogueToUse();
             StartDialogue();
             return;
         }
 
-        // Si hay una decisión en esta línea, no avanzar con Z
         if (HasChoiceAtCurrentLine())
-        {
             return;
-        }
 
-        // Si todavía se está escribiendo, completar la línea
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueUI.SetDialogueText(dialogueData.dialogueLines[dialogueIndex]);
+            dialogueUI.SetDialogueText(currentDialogueData.dialogueLines[dialogueIndex]);
             isTyping = false;
             return;
         }
 
-        // Si no hay decisión y ya terminó de escribirse, avanzar
         NextLine();
+    }
+
+    private void SelectDialogueToUse()
+    {
+        if (!hasChosenBiome)
+        {
+            currentDialogueData = firstDialogueData;
+        }
+        else
+        {
+            if (selectedBiome == "terrestre")
+                currentDialogueData = readyDialogueTerrestre;
+            else if (selectedBiome == "acuatico")
+                currentDialogueData = readyDialogueAcuatico;
+        }
     }
 
     private void StartDialogue()
     {
+        if (currentDialogueData == null)
+            return;
+
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        dialogueUI.SetNPCInfo(dialogueData.npcName, dialogueData.npcPortrait);
+        if (!hasChosenBiome && QuestController_JuanRdz.Instance != null)
+        {
+            QuestController_JuanRdz.Instance.OnTalkExplorer();
+        }
+
+        dialogueUI.SetNPCInfo(currentDialogueData.npcName, currentDialogueData.npcPortrait);
         dialogueUI.ShowDialogueUI(true);
         dialogueUI.ClearChoices();
 
@@ -66,9 +93,15 @@ public class NPC : MonoBehaviour, IInteractable
     {
         dialogueUI.ClearChoices();
 
+        if (IsEndLine(dialogueIndex))
+        {
+            EndDialogue();
+            return;
+        }
+
         dialogueIndex++;
 
-        if (dialogueIndex < dialogueData.dialogueLines.Length)
+        if (dialogueIndex < currentDialogueData.dialogueLines.Length)
         {
             DisplayCurrentLine();
         }
@@ -90,17 +123,16 @@ public class NPC : MonoBehaviour, IInteractable
         isTyping = true;
         dialogueUI.SetDialogueText("");
 
-        string currentLine = dialogueData.dialogueLines[dialogueIndex];
+        string currentLine = currentDialogueData.dialogueLines[dialogueIndex];
 
         foreach (char letter in currentLine)
         {
             dialogueUI.SetDialogueText(dialogueUI.dialogueText.text + letter);
-            yield return new WaitForSeconds(dialogueData.typingSpeed);
+            yield return new WaitForSeconds(currentDialogueData.typingSpeed);
         }
 
         isTyping = false;
 
-        // Cuando termina de escribir, revisar si esta línea tiene decisiones
         DialogueChoice currentChoice = GetChoiceForCurrentLine();
         if (currentChoice != null)
         {
@@ -108,22 +140,26 @@ public class NPC : MonoBehaviour, IInteractable
             yield break;
         }
 
-        // Si no hay decisiones, revisar auto avance
-        if (dialogueData.autoProgressLines != null &&
-            dialogueData.autoProgressLines.Length > dialogueIndex &&
-            dialogueData.autoProgressLines[dialogueIndex])
+        if (IsEndLine(dialogueIndex))
         {
-            yield return new WaitForSeconds(dialogueData.autoProgressDelay);
+            yield break;
+        }
+
+        if (currentDialogueData.autoProgressLines != null &&
+            currentDialogueData.autoProgressLines.Length > dialogueIndex &&
+            currentDialogueData.autoProgressLines[dialogueIndex])
+        {
+            yield return new WaitForSeconds(currentDialogueData.autoProgressDelay);
             NextLine();
         }
     }
 
     private DialogueChoice GetChoiceForCurrentLine()
     {
-        if (dialogueData.Choices == null)
+        if (currentDialogueData.Choices == null)
             return null;
 
-        foreach (DialogueChoice dialogueChoice in dialogueData.Choices)
+        foreach (DialogueChoice dialogueChoice in currentDialogueData.Choices)
         {
             if (dialogueChoice.dialogueIndex == dialogueIndex)
             {
@@ -139,6 +175,13 @@ public class NPC : MonoBehaviour, IInteractable
         return GetChoiceForCurrentLine() != null;
     }
 
+    private bool IsEndLine(int index)
+    {
+        return currentDialogueData.endDialogueLines != null &&
+               index < currentDialogueData.endDialogueLines.Length &&
+               currentDialogueData.endDialogueLines[index];
+    }
+
     private void DisplayChoices(DialogueChoice dialogueChoice)
     {
         dialogueUI.ClearChoices();
@@ -148,12 +191,50 @@ public class NPC : MonoBehaviour, IInteractable
             int nextIndex = dialogueChoice.nextDialogueIndexes[i];
             string choiceText = dialogueChoice.choices[i];
 
-            dialogueUI.CreateChoiceButton(choiceText, () => ChooseOption(nextIndex));
+            dialogueUI.CreateChoiceButton(choiceText, () => ChooseOption(choiceText, nextIndex));
         }
     }
 
-    private void ChooseOption(int nextIndex)
+    private void ChooseOption(string choiceText, int nextIndex)
     {
+        string lowerChoice = choiceText.ToLower();
+
+        if (!hasChosenBiome)
+        {
+            if (lowerChoice.Contains("terrest"))
+            {
+                selectedBiome = "terrestre";
+                hasChosenBiome = true;
+
+                if (QuestController_JuanRdz.Instance != null)
+                {
+                    QuestController_JuanRdz.Instance.OnBiomeChosen("terrestre");
+                }
+            }
+            else if (lowerChoice.Contains("acuat"))
+            {
+                selectedBiome = "acuatico";
+                hasChosenBiome = true;
+
+                if (QuestController_JuanRdz.Instance != null)
+                {
+                    QuestController_JuanRdz.Instance.OnBiomeChosen("acuatico");
+                }
+            }
+        }
+        else
+        {
+            if (lowerChoice.Contains("sí") || lowerChoice.Contains("si"))
+            {
+                if (QuestController_JuanRdz.Instance != null)
+                {
+                    QuestController_JuanRdz.Instance.OnMissionStart(selectedBiome);
+                }
+
+                Debug.Log("Iniciar minijuego de " + selectedBiome);
+            }
+        }
+
         dialogueIndex = nextIndex;
         dialogueUI.ClearChoices();
         DisplayCurrentLine();
