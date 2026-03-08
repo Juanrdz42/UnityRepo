@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 104327
+  controlID: 110530
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 104264
+  controlID: 110531
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 104265
+  controlID: 110521
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -248,11 +248,14 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: []
+      m_SelectedIDs:
+      - m_Data: 187220
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -379164
       - m_Data: -372392
+      - m_Data: -308132
       - m_Data: -265038
       - m_Data: -252044
       - m_Data: -252042
@@ -285,6 +288,8 @@ MonoBehaviour:
       - m_Data: 52168
       - m_Data: 52256
       - m_Data: 136848
+      - m_Data: 137080
+      - m_Data: 137084
       - m_Data: 137266
       - m_Data: 137380
       - m_Data: 137754
@@ -852,9 +857,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 592.4808, y: 22.472315, z: 0.11301643}
+    m_Target: {x: 62.321953, y: 28.266552, z: -0.1665675}
     speed: 2
-    m_Value: {x: 592.4808, y: 22.472315, z: 0.11301643}
+    m_Value: {x: 62.321953, y: 28.266552, z: -0.1665675}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -890,9 +895,9 @@ MonoBehaviour:
       m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
-        m_Target: 0
+        m_Target: 1
         speed: 2
-        m_Value: 0
+        m_Value: 1
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -904,9 +909,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 16.795279
+    m_Target: 54.36369
     speed: 2
-    m_Value: 16.795279
+    m_Value: 54.36369
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1182,7 +1187,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Babi/Sprites-Babi/ConveyorBelt
+    - Assets/Babi
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1192,7 +1197,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 60
   m_LastFolders:
-  - Assets/Babi/Sprites-Babi/ConveyorBelt
+  - Assets/Babi
   m_LastFoldersGridSize: 60
   m_LastProjectPath: /Users/babimartinez/Desktop/UnityRepo/JuegoFuego
   m_LockTracker:
@@ -1201,9 +1206,9 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
     m_SelectedIDs:
-    - m_Data: 187198
+    - m_Data: 54076
     m_LastClickedID:
-      m_Data: 187198
+      m_Data: 54076
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 52828
@@ -1305,9 +1310,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 137498
-    m_LastClickedInstanceID: 137498
-    m_HadKeyboardFocusLastEvent: 0
+    - m_Data: 187220
+    m_LastClickedInstanceID: 187220
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 49186
     - m_Data: 60424
@@ -1415,7 +1420,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 112}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 104328
+  controlID: 110603
   draggingID: 0
 --- !u!114 &15
 MonoBehaviour:
@@ -1488,7 +1493,7 @@ MonoBehaviour:
     m_CachedPref: -151
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 137498
+  m_LastInspectedObjectInstanceID: 187220
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
