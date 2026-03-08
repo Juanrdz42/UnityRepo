@@ -8,6 +8,7 @@ TagManager:
   - PlantText
   - BouncePad
   - BouncePad2
+  - Energy
   layers:
   - Default
   - TransparentFX
