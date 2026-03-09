@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54f161302b8c4db8b328fcce38b6fcf, type: 3}
+  m_Name: PhotoSequenceData 1
+  m_EditorClassIdentifier: Assembly-CSharp::PhotoSequenceData
+  birdName: Petirrojo
+  videoClip: {fileID: 32900000, guid: 4c68a3b7fdda34239b6fdc5267251f99, type: 3}
+  timingWindows:
+  - startTime: 0
+    endTime: 0.11
+    resultType: 1
+  - startTime: 0.12
+    endTime: 0.21
+    resultType: 2
+  - startTime: 0.22
+    endTime: 1.08
+    resultType: 3
+  - startTime: 1.09
+    endTime: 1.28
+    resultType: 2
+  - startTime: 1.29
+    endTime: 6.23
+    resultType: 2
+  - startTime: 6.24
+    endTime: 7.17
+    resultType: 1
+  - startTime: 7.18
+    endTime: 7.18
+    resultType: 0

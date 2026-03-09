@@ -1,14 +1,32 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
+using System.Collections;
 using TMPro;
 
 public class PhotoController : MonoBehaviour
 {
     public static PhotoController Instance;
 
+    [Header("UI")]
     public GameObject photoGamePanel;
+    public RawImage videoRawImage;
     public TMP_Text resultText;
+    public GameObject retryButton;
+    public TMP_Text takePhotoHint;
+
+    [Header("Game UI")]
+    public GameObject gameUI;
+
+    [Header("Video")]
+    public VideoPlayer videoPlayer;
+    public RenderTexture renderTexture;
 
     private PhotoSpot currentSpot;
+    private PhotoSequenceData currentSequence;
+
+    private bool photoTaken = false;
+    private bool videoFinished = false;
 
     private void Awake()
     {
@@ -19,28 +37,277 @@ public class PhotoController : MonoBehaviour
     {
         if (photoGamePanel != null)
             photoGamePanel.SetActive(false);
+
+        if (retryButton != null)
+            retryButton.SetActive(false);
+
+        if (videoRawImage != null && renderTexture != null)
+        {
+            videoRawImage.texture = renderTexture;
+            videoRawImage.enabled = false;
+        }
+
+        if (resultText != null)
+            resultText.text = "";
+
+        if (takePhotoHint != null)
+            takePhotoHint.text = "";
+
+        if (videoPlayer != null)
+        {
+            if (renderTexture != null)
+                videoPlayer.targetTexture = renderTexture;
+
+            videoPlayer.playOnAwake = false;
+            videoPlayer.isLooping = false;
+            videoPlayer.waitForFirstFrame = true;
+            videoPlayer.loopPointReached += OnVideoFinished;
+        }
+
+        ClearRenderTexture();
+    }
+
+    public bool IsPhotoGameOpen()
+    {
+        return photoGamePanel != null && photoGamePanel.activeSelf;
     }
 
     public void OpenPhotoGame(PhotoSpot spot)
     {
+        Debug.Log("OpenPhotoGame llamado");
+
+        if (photoGamePanel != null && photoGamePanel.activeSelf)
+            return;
+
         currentSpot = spot;
+        currentSequence = spot.sequenceData;
+        photoTaken = false;
+        videoFinished = false;
+
+        if (currentSequence == null)
+        {
+            Debug.LogWarning("currentSequence es null");
+            return;
+        }
+
+        if (currentSequence.videoClip == null)
+        {
+            Debug.LogWarning("videoClip es null");
+            return;
+        }
 
         if (photoGamePanel != null)
             photoGamePanel.SetActive(true);
 
+        if (gameUI != null)
+            gameUI.SetActive(false);
+
+        if (retryButton != null)
+            retryButton.SetActive(false);
+
         if (resultText != null)
-            resultText.text = "¡Toma la foto!";
+            resultText.text = "";
+
+        if (takePhotoHint != null)
+            takePhotoHint.text = "";
+
+        // Oculta el video mientras carga el nuevo clip
+        if (videoRawImage != null)
+            videoRawImage.enabled = false;
+
+        ClearRenderTexture();
+
+        if (videoPlayer != null)
+        {
+            videoPlayer.Stop();
+            videoPlayer.clip = currentSequence.videoClip;
+            videoPlayer.time = 0;
+            videoPlayer.Prepare();
+            StartCoroutine(PlayPreparedVideo());
+        }
+        else
+        {
+            Debug.LogWarning("videoPlayer es null");
+        }
+    }
+    private void TakePhoto()
+    {
+        if (videoPlayer == null || currentSequence == null)
+            return;
+
+        photoTaken = true;
+        videoPlayer.Pause();
+
+        float currentTime = (float)videoPlayer.time;
+        PhotoResultType result = EvaluateTiming(currentTime);
+
+        if (resultText != null)
+            resultText.text = GetResultText(result);
+
+        // Toda foto tomada cuenta
+        if (QuestController_JuanRdz.Instance != null)
+        {
+            QuestController_JuanRdz.Instance.AddPhoto();
+        }
+
+        // Solo completa el spot si fue buena o perfecta
+        if (result == PhotoResultType.Good || result == PhotoResultType.Perfect)
+        {
+            if (currentSpot != null)
+                currentSpot.CompleteSpot();
+        }
+
+        StartCoroutine(ClosePhotoModeAfterDelay(2f));
+    }
+    private PhotoResultType EvaluateTiming(float currentTime)
+    {
+        if (currentSequence == null || currentSequence.timingWindows == null)
+            return PhotoResultType.None;
+
+        PhotoResultType bestResult = PhotoResultType.None;
+
+        foreach (PhotoTimingWindow window in currentSequence.timingWindows)
+        {
+            if (currentTime >= window.startTime && currentTime <= window.endTime)
+            {
+                if ((int)window.resultType > (int)bestResult)
+                {
+                    bestResult = window.resultType;
+                }
+            }
+        }
+
+        return bestResult;
     }
 
-    public void CompletePhoto()
+    private string GetResultText(PhotoResultType result)
     {
-        if (currentSpot != null)
+        switch (result)
         {
-            currentSpot.CompleteSpot();
-            currentSpot = null;
+            case PhotoResultType.Perfect:
+                return "¡Foto perfecta!";
+
+            case PhotoResultType.Good:
+                return "¡Buena foto!";
+
+            case PhotoResultType.Bad:
+                return "Podría ser mejor";
+
+            default:
+                return "Fallaste";
         }
+    }
+
+    private void OnVideoFinished(VideoPlayer vp)
+    {
+        videoFinished = true;
+
+        if (!photoTaken)
+        {
+            if (resultText != null)
+                resultText.text = "Fallaste";
+
+            if (retryButton != null)
+                retryButton.SetActive(true);
+        }
+    }
+
+    public void RetryVideo()
+    {
+        if (currentSequence == null || currentSequence.videoClip == null || videoPlayer == null)
+            return;
+
+        photoTaken = false;
+        videoFinished = false;
+
+        if (retryButton != null)
+            retryButton.SetActive(false);
+
+        if (resultText != null)
+            resultText.text = "";
+
+        if (takePhotoHint != null)
+            takePhotoHint.text = "";
+
+        if (videoRawImage != null)
+            videoRawImage.enabled = false;
+
+        ClearRenderTexture();
+
+        videoPlayer.Stop();
+        videoPlayer.clip = currentSequence.videoClip;
+        videoPlayer.time = 0;
+        videoPlayer.Prepare();
+        StartCoroutine(PlayPreparedVideo());
+    }
+
+    public void ClosePhotoGame()
+    {
+        if (videoPlayer != null)
+            videoPlayer.Stop();
 
         if (photoGamePanel != null)
             photoGamePanel.SetActive(false);
+
+        if (retryButton != null)
+            retryButton.SetActive(false);
+
+        if (gameUI != null)
+            gameUI.SetActive(true);
+
+        if (resultText != null)
+            resultText.text = "";
+
+        if (takePhotoHint != null)
+            takePhotoHint.text = "";
+
+        if (videoRawImage != null)
+            videoRawImage.enabled = false;
+
+        ClearRenderTexture();
+
+        currentSpot = null;
+        currentSequence = null;
+        photoTaken = false;
+        videoFinished = false;
+    }
+
+    public void TryTakePhoto()
+    {
+        if (!IsPhotoGameOpen())
+            return;
+
+        if (photoTaken || videoFinished)
+            return;
+
+        TakePhoto();
+    }
+
+    private IEnumerator PlayPreparedVideo()
+    {
+        while (!videoPlayer.isPrepared)
+            yield return null;
+
+        if (videoRawImage != null)
+            videoRawImage.enabled = true;
+
+        videoPlayer.Play();
+    }
+
+    private IEnumerator ClosePhotoModeAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ClosePhotoGame();
+    }
+
+    private void ClearRenderTexture()
+    {
+        if (renderTexture == null)
+            return;
+
+        RenderTexture currentRT = RenderTexture.active;
+        RenderTexture.active = renderTexture;
+        GL.Clear(true, true, Color.clear);
+        RenderTexture.active = currentRT;
     }
 }

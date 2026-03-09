@@ -4,15 +4,18 @@ using System.Collections;
 
 public class ForestGameController_JuanRdz : MonoBehaviour
 {
-
     public static ForestGameController_JuanRdz Instance;
+
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI resultText;
 
     public float gameTime = 60f;
 
     private float currentTime;
     private bool gameStarted = false;
+    private bool gameEnded = false;
+
     public PhotoSpot[] photoSpots;
 
     void Awake()
@@ -20,9 +23,13 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         Instance = this;
     }
 
-        void Start()
+    void Start()
     {
-        timerText.gameObject.SetActive(false); 
+        timerText.gameObject.SetActive(false);
+
+        if (resultText != null)
+            resultText.gameObject.SetActive(false);
+
         StartCoroutine(StartCountdown());
     }
 
@@ -43,9 +50,8 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         countdownText.gameObject.SetActive(false);
-
         timerText.gameObject.SetActive(true);
-    
+
         StartGame();
         ActivateRandomSpots();
     }
@@ -53,14 +59,18 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     void StartGame()
     {
         gameStarted = true;
+        gameEnded = false;
         currentTime = gameTime;
     }
 
     void Update()
     {
-        if (!gameStarted) return;
+        if (!gameStarted || gameEnded) return;
 
         currentTime -= Time.deltaTime;
+
+        if (currentTime < 0)
+            currentTime = 0;
 
         timerText.text = Mathf.Ceil(currentTime).ToString();
 
@@ -71,36 +81,51 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     }
 
     void ActivateRandomSpots()
-{
-    // Apagar todos primero
-    foreach (PhotoSpot spot in photoSpots)
     {
-        spot.SetActiveSpot(false);
-    }
+        foreach (PhotoSpot spot in photoSpots)
+        {
+            spot.SetActiveSpot(false);
+        }
 
-    // Crear copia de la lista
-    System.Collections.Generic.List<PhotoSpot> shuffledSpots =
-        new System.Collections.Generic.List<PhotoSpot>(photoSpots);
+        System.Collections.Generic.List<PhotoSpot> shuffledSpots =
+            new System.Collections.Generic.List<PhotoSpot>(photoSpots);
 
-    // Mezclar
-    for (int i = 0; i < shuffledSpots.Count; i++)
-    {
-        PhotoSpot temp = shuffledSpots[i];
-        int randomIndex = Random.Range(i, shuffledSpots.Count);
-        shuffledSpots[i] = shuffledSpots[randomIndex];
-        shuffledSpots[randomIndex] = temp;
-    }
+        for (int i = 0; i < shuffledSpots.Count; i++)
+        {
+            PhotoSpot temp = shuffledSpots[i];
+            int randomIndex = Random.Range(i, shuffledSpots.Count);
+            shuffledSpots[i] = shuffledSpots[randomIndex];
+            shuffledSpots[randomIndex] = temp;
+        }
 
-    // Activar solo 3
-    for (int i = 0; i < 3 && i < shuffledSpots.Count; i++)
-    {
-        shuffledSpots[i].SetActiveSpot(true);
+        for (int i = 0; i < 3 && i < shuffledSpots.Count; i++)
+        {
+            shuffledSpots[i].SetActiveSpot(true);
+        }
     }
-}
 
     void EndGame()
     {
         gameStarted = false;
-        Debug.Log("Fin del minijuego");
+        gameEnded = true;
+
+        bool won = false;
+
+        if (QuestController_JuanRdz.Instance != null)
+        {
+            won = QuestController_JuanRdz.Instance.currentPhotos >= QuestController_JuanRdz.Instance.targetPhotos;
+        }
+
+        if (resultText != null)
+        {
+            resultText.gameObject.SetActive(true);
+
+            if (won)
+                resultText.text = "Ganaste";
+            else
+                resultText.text = "Perdiste";
+        }
+
+        Debug.Log(won ? "Ganaste" : "Perdiste");
     }
 }

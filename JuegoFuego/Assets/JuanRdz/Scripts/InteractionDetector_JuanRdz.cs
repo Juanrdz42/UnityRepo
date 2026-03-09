@@ -14,7 +14,22 @@ public class InteractionDetector_JuanRdz : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed && interactableInRange != null && interactableInRange.CanInteract())
+        if (!context.performed)
+            return;
+
+        // Si la cámara está abierta, Z toma la foto
+        if (PhotoController.Instance != null && PhotoController.Instance.IsPhotoGameOpen())
+        {
+            PhotoController.Instance.TryTakePhoto();
+
+            if (interactionIcon != null)
+                interactionIcon.SetActive(false);
+
+            return;
+        }
+
+        // Si no, interacción normal
+        if (interactableInRange != null && interactableInRange.CanInteract())
         {
             interactableInRange.Interact();
         }
@@ -28,7 +43,7 @@ public class InteractionDetector_JuanRdz : MonoBehaviour
         {
             interactableInRange = interactable;
 
-            if (interactionIcon != null)
+            if (interactionIcon != null && !IsPhotoGameOpen())
                 interactionIcon.SetActive(true);
         }
     }
@@ -44,5 +59,10 @@ public class InteractionDetector_JuanRdz : MonoBehaviour
             if (interactionIcon != null)
                 interactionIcon.SetActive(false);
         }
+    }
+
+    private bool IsPhotoGameOpen()
+    {
+        return PhotoController.Instance != null && PhotoController.Instance.IsPhotoGameOpen();
     }
 }

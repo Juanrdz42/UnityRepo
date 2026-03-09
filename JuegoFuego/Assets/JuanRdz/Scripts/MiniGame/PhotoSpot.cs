@@ -5,6 +5,7 @@ public class PhotoSpot : MonoBehaviour, IInteractable
     public GameObject birdVisual;
     public bool isActiveSpot = false;
     public bool isCompleted = false;
+    public PhotoSequenceData sequenceData;
 
     private void Start()
     {
