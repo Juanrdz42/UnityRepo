@@ -17,6 +17,15 @@ public class QuestController_JuanRdz : MonoBehaviour
     public int currentPhotos = 0;
     public int targetPhotos = 3;
 
+    [Header("Score")]
+    public int totalScore = 0;
+    public int perfectPhotos = 0;
+    public int goodPhotos = 0;
+    public int badPhotos = 0;
+    public bool speedBonusEarned = false;
+
+    public List<PhotoResultType> photoResults = new List<PhotoResultType>();
+
     private HashSet<string> completedMissions = new HashSet<string>();
 
     private void Awake()
@@ -46,13 +55,16 @@ public class QuestController_JuanRdz : MonoBehaviour
     private void Start()
     {
         RefreshObjectiveTextReference();
-        CheckSceneObjective(SceneManager.GetActiveScene().name);
+
+        if (string.IsNullOrEmpty(currentObjective))
+        {
+            SetObjective("Ve y habla con el explorador.");
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         RefreshObjectiveTextReference();
-        CheckSceneObjective(scene.name);
     }
 
     private void RefreshObjectiveTextReference()
@@ -74,21 +86,6 @@ public class QuestController_JuanRdz : MonoBehaviour
         }
     }
 
-    private void CheckSceneObjective(string sceneName)
-    {
-        if (sceneName == "Mini2_Bosque")
-        {
-            if (!IsMissionCompleted("Mini2_Bosque_PhotoMission"))
-            {
-                UpdatePhotoObjective();
-            }
-        }
-        else if (string.IsNullOrEmpty(currentObjective))
-        {
-            SetObjective("Ve con el explorador.");
-        }
-    }
-
     public void SetObjective(string newObjective)
     {
         currentObjective = newObjective;
@@ -101,26 +98,26 @@ public class QuestController_JuanRdz : MonoBehaviour
 
     public void OnTalkExplorer()
     {
-        SetObjective("Elige un ecosistema.");
+        SetObjective("Elige el bioma en el que más estés interesado.");
     }
 
     public void OnBiomeChosen(string biome)
     {
-        SetObjective("Habla con el explorador.");
+        SetObjective("Vuelve a hablar con el explorador para iniciar la toma de fotografías.");
     }
 
     public void OnMissionStart(string biome)
     {
+        currentPhotos = 0;
+        targetPhotos = 3;
+        ResetScore();
+
         if (biome == "terrestre")
         {
-            currentPhotos = 0;
-            targetPhotos = 3;
-            UpdatePhotoObjective();
+            SetObjective("Ve al bosque y toma 3 fotos.");
         }
         else if (biome == "acuatico")
         {
-            currentPhotos = 0;
-            targetPhotos = 3;
             SetObjective("Ve al lago y toma 3 fotos.");
         }
     }
@@ -136,7 +133,7 @@ public class QuestController_JuanRdz : MonoBehaviour
 
         if (currentPhotos >= targetPhotos)
         {
-            CompleteMission("Mini2_Bosque_PhotoMission");
+            CompleteMission("PhotoMission");
         }
     }
 
@@ -151,11 +148,51 @@ public class QuestController_JuanRdz : MonoBehaviour
         {
             completedMissions.Add(missionId);
         }
-
     }
 
     public bool IsMissionCompleted(string missionId)
     {
         return completedMissions.Contains(missionId);
+    }
+
+    public void ResetScore()
+    {
+        totalScore = 0;
+        perfectPhotos = 0;
+        goodPhotos = 0;
+        badPhotos = 0;
+        speedBonusEarned = false;
+        photoResults.Clear();
+    }
+
+    public void AddPhotoScore(PhotoResultType result)
+    {
+        photoResults.Add(result);
+
+        switch (result)
+        {
+            case PhotoResultType.Perfect:
+                totalScore += 5;
+                perfectPhotos++;
+                break;
+
+            case PhotoResultType.Good:
+                totalScore += 2;
+                goodPhotos++;
+                break;
+
+            case PhotoResultType.Bad:
+                badPhotos++;
+                break;
+        }
+    }
+
+    public void AddSpeedBonus()
+    {
+        if (!speedBonusEarned)
+        {
+            totalScore += 5;
+            speedBonusEarned = true;
+        }
     }
 }

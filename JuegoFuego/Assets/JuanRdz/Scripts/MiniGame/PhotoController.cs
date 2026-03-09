@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PhotoController : MonoBehaviour
@@ -111,7 +112,6 @@ public class PhotoController : MonoBehaviour
         if (takePhotoHint != null)
             takePhotoHint.text = "";
 
-        // Oculta el video mientras carga el nuevo clip
         if (videoRawImage != null)
             videoRawImage.enabled = false;
 
@@ -130,6 +130,7 @@ public class PhotoController : MonoBehaviour
             Debug.LogWarning("videoPlayer es null");
         }
     }
+
     private void TakePhoto()
     {
         if (videoPlayer == null || currentSequence == null)
@@ -144,13 +145,12 @@ public class PhotoController : MonoBehaviour
         if (resultText != null)
             resultText.text = GetResultText(result);
 
-        // Toda foto tomada cuenta
         if (QuestController_JuanRdz.Instance != null)
         {
+            QuestController_JuanRdz.Instance.AddPhotoScore(result);
             QuestController_JuanRdz.Instance.AddPhoto();
         }
 
-        // Solo completa el spot si fue buena o perfecta
         if (result == PhotoResultType.Good || result == PhotoResultType.Perfect)
         {
             if (currentSpot != null)
@@ -159,6 +159,7 @@ public class PhotoController : MonoBehaviour
 
         StartCoroutine(ClosePhotoModeAfterDelay(2f));
     }
+
     private PhotoResultType EvaluateTiming(float currentTime)
     {
         if (currentSequence == null || currentSequence.timingWindows == null)
@@ -186,13 +187,10 @@ public class PhotoController : MonoBehaviour
         {
             case PhotoResultType.Perfect:
                 return "¡Foto perfecta!";
-
             case PhotoResultType.Good:
                 return "¡Buena foto!";
-
             case PhotoResultType.Bad:
                 return "Podría ser mejor";
-
             default:
                 return "Fallaste";
         }
@@ -270,6 +268,18 @@ public class PhotoController : MonoBehaviour
         currentSequence = null;
         photoTaken = false;
         videoFinished = false;
+
+        if (QuestController_JuanRdz.Instance != null &&
+            QuestController_JuanRdz.Instance.currentPhotos >= QuestController_JuanRdz.Instance.targetPhotos)
+        {
+            if (ForestGameController_JuanRdz.Instance != null)
+            {
+                ForestGameController_JuanRdz.Instance.FinishGameAndGoToResults();
+                return;
+            }
+
+            SceneManager.LoadScene("Mini2_Resultados");
+        }
     }
 
     public void TryTakePhoto()

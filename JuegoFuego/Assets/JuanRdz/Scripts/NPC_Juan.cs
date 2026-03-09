@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour, IInteractable
 {
@@ -17,6 +18,9 @@ public class NPC : MonoBehaviour, IInteractable
 
     private bool hasChosenBiome = false;
     private string selectedBiome = "";
+
+    private bool shouldStartMissionAfterDialogue = false;
+    private string pendingBiomeScene = "";
 
     void Start()
     {
@@ -221,6 +225,11 @@ public class NPC : MonoBehaviour, IInteractable
                     QuestController_JuanRdz.Instance.OnBiomeChosen("acuatico");
                 }
             }
+
+            dialogueIndex = nextIndex;
+            dialogueUI.ClearChoices();
+            DisplayCurrentLine();
+            return;
         }
         else
         {
@@ -231,7 +240,21 @@ public class NPC : MonoBehaviour, IInteractable
                     QuestController_JuanRdz.Instance.OnMissionStart(selectedBiome);
                 }
 
-                Debug.Log("Iniciar minijuego de " + selectedBiome);
+                shouldStartMissionAfterDialogue = true;
+
+                if (selectedBiome == "terrestre")
+                {
+                    pendingBiomeScene = "Mini2_Bosque";
+                }
+                else if (selectedBiome == "acuatico")
+                {
+                    pendingBiomeScene = "Mini2_Lago";
+                }
+
+                dialogueIndex = nextIndex;
+                dialogueUI.ClearChoices();
+                DisplayCurrentLine();
+                return;
             }
         }
 
@@ -248,5 +271,15 @@ public class NPC : MonoBehaviour, IInteractable
         dialogueUI.ClearChoices();
         dialogueUI.SetDialogueText("");
         dialogueUI.ShowDialogueUI(false);
+
+        if (shouldStartMissionAfterDialogue && !string.IsNullOrEmpty(pendingBiomeScene))
+        {
+            string sceneToLoad = pendingBiomeScene;
+
+            shouldStartMissionAfterDialogue = false;
+            pendingBiomeScene = "";
+
+            SceneManager.LoadScene(sceneToLoad);
+        }
     }
 }

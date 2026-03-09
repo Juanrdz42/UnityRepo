@@ -49762,6 +49762,7 @@ RectTransform:
   - {fileID: 1709457091}
   - {fileID: 1735669410}
   - {fileID: 2123791439}
+  - {fileID: 429821221}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -50335,22 +50336,22 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429821217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1220815837}
   - {fileID: 626941396}
   - {fileID: 1695468533}
   - {fileID: 283396975}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 249077513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 480, y: 260}
+  m_SizeDelta: {x: 960, y: 520}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &459618903
 GameObject:
   m_ObjectHideFlags: 0
@@ -50873,12 +50874,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499112878}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.66003, y: 15.3214, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1098070578}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &499112880
 MonoBehaviour:
@@ -50893,7 +50894,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestController_JuanRdz
   objectiveText: {fileID: 232899644}
-  currentObjective: Hola
+  currentObjective: 
+  currentPhotos: 0
+  targetPhotos: 3
+  totalScore: 0
+  perfectPhotos: 0
+  goodPhotos: 0
+  badPhotos: 0
+  speedBonusEarned: 0
+  photoResults: 
 --- !u!1 &505393531
 GameObject:
   m_ObjectHideFlags: 0
@@ -65190,7 +65199,6 @@ Transform:
   m_Children:
   - {fileID: 1508673518}
   - {fileID: 135553061}
-  - {fileID: 499112879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1148256975
@@ -266304,10 +266312,10 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 478434713}
   - {fileID: 370108409}
-  - {fileID: 429821221}
   - {fileID: 1195436559}
   - {fileID: 2015858507}
   - {fileID: 249077513}
   - {fileID: 1509092153}
   - {fileID: 1098070578}
   - {fileID: 951018878}
+  - {fileID: 499112879}

@@ -27,7 +27,7 @@ MonoBehaviour:
   endDialogueLines: 00000101
   autoProgressDelay: 1.5
   Choices:
-  - dialogueIndex: 0
+  - dialogueIndex: 1
     choices:
     - "S\xED, iniciar"
     - "Todav\xEDa no"

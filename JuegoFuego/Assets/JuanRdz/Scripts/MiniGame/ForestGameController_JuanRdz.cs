@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ForestGameController_JuanRdz : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI resultText;
+
+    public GameObject timerPanel;
 
     public float gameTime = 60f;
 
@@ -27,6 +30,9 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     {
         timerText.gameObject.SetActive(false);
 
+        if (timerPanel != null)
+            timerPanel.SetActive(false);
+
         if (resultText != null)
             resultText.gameObject.SetActive(false);
 
@@ -36,6 +42,12 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     IEnumerator StartCountdown()
     {
         countdownText.gameObject.SetActive(true);
+
+        countdownText.text = "5";
+        yield return new WaitForSeconds(1);
+
+        countdownText.text = "4";
+        yield return new WaitForSeconds(1);
 
         countdownText.text = "3";
         yield return new WaitForSeconds(1);
@@ -50,7 +62,11 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         countdownText.gameObject.SetActive(false);
+
         timerText.gameObject.SetActive(true);
+
+        if (timerPanel != null)
+            timerPanel.SetActive(true);
 
         StartGame();
         ActivateRandomSpots();
@@ -67,12 +83,21 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     {
         if (!gameStarted || gameEnded) return;
 
+        if (QuestController_JuanRdz.Instance != null)
+        {
+            if (QuestController_JuanRdz.Instance.currentPhotos >= QuestController_JuanRdz.Instance.targetPhotos)
+            {
+                EndGame();
+                return;
+            }
+        }
+
         currentTime -= Time.deltaTime;
 
         if (currentTime < 0)
             currentTime = 0;
 
-        timerText.text = Mathf.Ceil(currentTime).ToString();
+        timerText.text = "Tiempo: " + Mathf.Ceil(currentTime).ToString();
 
         if (currentTime <= 0)
         {
@@ -127,5 +152,20 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         }
 
         Debug.Log(won ? "Ganaste" : "Perdiste");
+    }
+
+    public void FinishGameAndGoToResults()
+    {
+        gameStarted = false;
+        gameEnded = true;
+
+        if (QuestController_JuanRdz.Instance != null &&
+            QuestController_JuanRdz.Instance.currentPhotos >= QuestController_JuanRdz.Instance.targetPhotos &&
+            currentTime > 30f)
+        {
+            QuestController_JuanRdz.Instance.AddSpeedBonus();
+        }
+
+        SceneManager.LoadScene("Mini2_Resultados");
     }
 }
