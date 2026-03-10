@@ -11,4 +11,7 @@ public static class GameData
     // Nueva lista para guardar qué banderas ya se usaron
     public static List<int> banderasCompletadas = new List<int>();
     public static bool puertaAbierta = false;
+    public static int plantasGuardadas = 0;
+    public static Vector3 ultimoCheckpointPos;
+    public static bool tieneCheckpoint = false;
 }
