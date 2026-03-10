@@ -15866,8 +15866,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15937,71 +15937,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128647844}
   m_CullTransparentMesh: 1
---- !u!1 &139781257
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 139781259}
-  - component: {fileID: 139781260}
-  m_Layer: 0
-  m_Name: QuestionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &139781259
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139781257}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.7442, y: 8.88027, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &139781260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139781257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3b50ad7010144c8a1e15d1ee58a14d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::QuestionManager
-  listaDePreguntas:
-  - enunciado: "Cuantos a\xF1os tienes  de experiencia en la naturaleza?"
-    opcion1: Menos de 1
-    opcion2: 1 - 5
-    opcion3: "M\xE1s de 5"
-  - enunciado: Tienes visa para trabajar fuera?
-    opcion1: Si
-    opcion2: No
-    opcion3: No se
-  - enunciado: 'Ya has trabajado con AWAQ antes? '
-    opcion1: Si
-    opcion2: No
-    opcion3: No se
-  - enunciado: Cuales son tus qualificaciones?
-    opcion1: Tengo experiencia con animales
-    opcion2: No tengo
-    opcion3: Ya he trabajado en bosques
-  - enunciado: Aqui va la pregunta 5
-    opcion1: Opcion 1
-    opcion2: opcion 2
-    opcion3: Opcion 3
 --- !u!4 &146828715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6012602578541207073, guid: 5944dfe8ea764483ba0e8e1b0f3f2427, type: 3}
@@ -16571,7 +16506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -32611,7 +32546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flag
   winUI: {fileID: 577318434}
   idBandera: 4
-  preguntaTexto: 'Ya has trabajado con AWAQ antes? '
+  preguntaTexto: "Las estaciones biol\xF3gicas suelen estar en lugares remotos. \xBFC\xF3mo
+    te adaptas a entornos de trabajo con recursos limitados?"
   tituloUI: {fileID: 1059726553}
   cuerpoUI: {fileID: 1415125058}
 --- !u!61 &289862042
@@ -42815,7 +42751,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13, y: -7.6, z: -10}
+  m_LocalPosition: {x: 593.1, y: 24.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43353,8 +43289,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -183.7}
-  m_SizeDelta: {x: 0, y: -367.41}
+  m_AnchoredPosition: {x: 0, y: 0.0025024414}
+  m_SizeDelta: {x: 0, y: -0.0048828}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &582576169
 GameObject:
@@ -51649,7 +51585,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flag
   winUI: {fileID: 577318434}
   idBandera: 3
-  preguntaTexto: Cuales son tus qualificaciones?
+  preguntaTexto: "El monitoreo biol\xF3gico requiere constancia. \xBFQu\xE9 esquema
+    de voluntariado se adapta mejor a tu disponibilidad actual?"
   tituloUI: {fileID: 1059726553}
   cuerpoUI: {fileID: 1415125058}
 --- !u!61 &639171485
@@ -52073,7 +52010,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flag
   winUI: {fileID: 577318434}
   idBandera: 1
-  preguntaTexto: "Cuantos a\xF1os tienes  de experiencia en la naturaleza?"
+  preguntaTexto: "\xBFCu\xE1l es la principal raz\xF3n que te motiva a convertirte
+    en biomonitor en nuestras estaciones biol\xF3gicas?"
   tituloUI: {fileID: 1059726553}
   cuerpoUI: {fileID: 1415125058}
 --- !u!61 &671299355
@@ -52387,7 +52325,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flag
   winUI: {fileID: 577318434}
   idBandera: 2
-  preguntaTexto: Tienes visa para trabajar fuera?
+  preguntaTexto: "En el trabajo de campo, \xBFen qu\xE9 \xE1rea consideras que aportar\xEDas
+    m\xE1s valor al equipo?"
   tituloUI: {fileID: 1059726553}
   cuerpoUI: {fileID: 1415125058}
 --- !u!61 &698225825
@@ -69620,7 +69559,7 @@ Transform:
   m_GameObject: {fileID: 980560340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13, y: -7.6, z: -10}
+  m_LocalPosition: {x: 593.1, y: 24.5, z: -10}
   m_LocalScale: {x: 1.3864, y: 1.2507, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78158,7 +78097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 907, y: 400}
+  m_AnchoredPosition: {x: 954, y: 408}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059726553
@@ -78190,8 +78129,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287627264
-  m_fontColor: {r: 0, g: 0, b: 0.5660378, a: 1}
+    rgba: 4279260964
+  m_fontColor: {r: 0.13946241, g: 0.33962262, b: 0.062477753, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -156777,7 +156716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1100, y: 228}
+  m_AnchoredPosition: {x: 1147, y: 157}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1415125058
@@ -156800,7 +156739,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Cuantos a\xF1os tienes \nde experiencia\nen la naturaleza?"
+  m_text: HOLAAAA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -156827,12 +156766,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 146.1
+  m_fontSize: 72
   m_fontSizeBase: 146.1
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 60
+  m_fontSizeMax: 120
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -156866,7 +156805,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2015.4961, y: -40.69165, z: 229.20044, w: -361.74927}
+  m_margin: {x: -2015.4961, y: -135.68542, z: 229.20044, w: -425.0786}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -181153,7 +181092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -39, y: -398}
+  m_AnchoredPosition: {x: 8, y: -548}
   m_SizeDelta: {x: 909.2252, y: 213.8848}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1708343326
@@ -181238,14 +181177,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a1e8ea5d2ad245c4abe242c647698dd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e86ae80ea19fd948b6d0a406edfc8cb, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -189145,7 +189084,7 @@ GameObject:
   - component: {fileID: 1777221912}
   - component: {fileID: 1777221911}
   m_Layer: 0
-  m_Name: Finish (4)
+  m_Name: Finish_Ultima
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189180,7 +189119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Flag
   winUI: {fileID: 577318434}
   idBandera: 5
-  preguntaTexto: Aqui va la pregunta 5
+  preguntaTexto: "\xBFQu\xE9 tema te gustar\xEDa profundizar antes de llegar a la
+    estaci\xF3n?"
   tituloUI: {fileID: 1059726553}
   cuerpoUI: {fileID: 1415125058}
 --- !u!61 &1777221912
@@ -189279,7 +189219,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3708508325519384304, guid: f73dfe034c22cfc41bd7e8799020a5ac, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8160377, b: 0.8160377, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -229670,11 +229610,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1794306352947962447, guid: e2379ee70aa8f4557aa1759239e2bfd4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13
+      value: 593.1
       objectReference: {fileID: 0}
     - target: {fileID: 1794306352947962447, guid: e2379ee70aa8f4557aa1759239e2bfd4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.6
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: 1794306352947962447, guid: e2379ee70aa8f4557aa1759239e2bfd4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -229839,6 +229779,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb8c2d12f6403411ea6977d5665fbe59, type: 3}
+--- !u!1001 &9054656450897726122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2485853070551285959, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_Name
+      value: QuestionManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.7442
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.88027
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424414796030924636, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d62c99ffb27084e3789aceaac8ac82ce, type: 3}
 --- !u!1001 &9111389588565325222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -229915,5 +229912,5 @@ SceneRoots:
   - {fileID: 402806304}
   - {fileID: 157800942}
   - {fileID: 198743710}
-  - {fileID: 139781259}
+  - {fileID: 9054656450897726122}
   - {fileID: 681082874}

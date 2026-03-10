@@ -5,9 +5,11 @@ public static class GameData // static porque no tengo que ponerlo en ningun obj
 {
     // memoria de las preguntas
     public static int PreguntaActualID; // guarda el numero de la bandera
-   // El diccionario es como una "agenda" en el número 1 guarda la respuesta "A", etc.
+   
+   // El diccionario es como una "agenda" en el número 1 guarda la respuesta "1", etc.
     public static Dictionary<int, string> respuestasEncuesta = new Dictionary<int, string>();
     // GPS del avion
+    
     public static Vector3 posicionRetorno; // guarda las coordenadas donde se quedo
     public static bool regresarDeNubes = false;  // checa si vienes de ese juego o no
 

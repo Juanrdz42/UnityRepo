@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2485853070551285959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5424414796030924636}
+  - component: {fileID: 4169070472209218629}
+  m_Layer: 0
+  m_Name: QuestionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5424414796030924636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485853070551285959}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.7442, y: 8.88027, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4169070472209218629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485853070551285959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3b50ad7010144c8a1e15d1ee58a14d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionManager
+  listaDePreguntas:
+  - enunciado: "\xBFCu\xE1l es la principal raz\xF3n que te motiva a convertirte
+      en biomonitor en nuestras estaciones biol\xF3gicas?"
+    opcion1: "Contribuir directamente a la conservaci\xF3n de la biodiversidad."
+    opcion2: "Aprender t\xE9cnicas cient\xEDficas de monitoreo en campo."
+    opcion3: Conectar con otras personas interesadas en el medio ambiente.
+  - enunciado: "En el trabajo de campo, \xBFen qu\xE9 \xE1rea consideras que aportar\xEDas
+      m\xE1s valor al equipo?"
+    opcion1: "Identificaci\xF3n y registro de especies (Flora/Fauna)."
+    opcion2: "Uso de herramientas digitales y recolecci\xF3n de datos."
+    opcion3: "Log\xEDstica y organizaci\xF3n de actividades en la estaci\xF3n."
+  - enunciado: "El monitoreo biol\xF3gico requiere constancia. \xBFQu\xE9 esquema
+      de voluntariado se adapta mejor a tu disponibilidad actual?"
+    opcion1: Estancias intensivas (varias semanas continuas).
+    opcion2: "Visitas peri\xF3dicas programadas (fines de semana)."
+    opcion3: "Apoyo remoto en an\xE1lisis de datos y reportes."
+  - enunciado: "Las estaciones biol\xF3gicas suelen estar en lugares remotos. \xBFC\xF3mo
+      te adaptas a entornos de trabajo con recursos limitados?"
+    opcion1: Soy muy adaptable y disfruto los retos en la naturaleza.
+    opcion2: Mantengo la calma y busco soluciones creativas.
+    opcion3: Prefiero seguir protocolos establecidos para evitar errores.
+  - enunciado: "\xBFQu\xE9 tema te gustar\xEDa profundizar antes de llegar a la estaci\xF3n?"
+    opcion1: "Protocolos de seguridad en zonas de conservaci\xF3n."
+    opcion2: "Metodolog\xEDas espec\xEDficas de monitoreo biol\xF3gico."
+    opcion3: "Uso de la aplicaci\xF3n web para el reporte de hallazgos."
