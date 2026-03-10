@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 119633
+  controlID: 143435
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 119634
+  controlID: 143366
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 119624
+  controlID: 143367
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -253,6 +253,25 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -508356
+      - m_Data: -507640
+      - m_Data: -488142
+      - m_Data: -488140
+      - m_Data: -487494
+      - m_Data: -487492
+      - m_Data: -484614
+      - m_Data: -484598
+      - m_Data: -471592
+      - m_Data: -471314
+      - m_Data: -469162
+      - m_Data: -469160
+      - m_Data: -468528
+      - m_Data: -467884
+      - m_Data: -463122
+      - m_Data: -461588
+      - m_Data: -458084
+      - m_Data: -457540
+      - m_Data: -456420
       - m_Data: -435944
       - m_Data: -434702
       - m_Data: -430024
@@ -307,6 +326,9 @@ MonoBehaviour:
       - m_Data: 312438
       - m_Data: 318016
       - m_Data: 318044
+      - m_Data: 350504
+      - m_Data: 351314
+      - m_Data: 357820
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -871,9 +893,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -3.4669526, y: -2.3310862, z: 7.5529833}
+    m_Target: {x: 8.185634, y: 0.37878847, z: -10.156981}
     speed: 2
-    m_Value: {x: -3.4669526, y: -2.3310862, z: 7.5529833}
+    m_Value: {x: 8.185634, y: 0.37878847, z: -10.156981}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -923,9 +945,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.337583
+    m_Target: 27.822823
     speed: 2
-    m_Value: 11.337583
+    m_Value: 27.822823
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1201,7 +1223,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Babi/Sprites-Babi
+    - Assets/Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1211,18 +1233,18 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 60
   m_LastFolders:
-  - Assets/Babi/Sprites-Babi
+  - Assets/Scenes
   m_LastFoldersGridSize: 60
   m_LastProjectPath: /Users/babimartinez/Desktop/UnityRepo/JuegoFuego
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 47.999878}
+    scrollPos: {x: 0, y: 151.5}
     m_SelectedIDs:
-    - m_Data: 54200
+    - m_Data: 54084
     m_LastClickedID:
-      m_Data: 54200
+      m_Data: 54084
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 52828
@@ -1230,7 +1252,6 @@ MonoBehaviour:
     - m_Data: 52832
     - m_Data: 52834
     - m_Data: 54076
-    - m_Data: 54082
     - m_Data: 54088
     - m_Data: 54096
     - m_Data: 54200
@@ -1238,6 +1259,7 @@ MonoBehaviour:
     - m_Data: 57540
     - m_Data: 63368
     - m_Data: 63372
+    - m_Data: 63376
     - m_Data: 63388
     - m_Data: 63392
     - m_Data: 63404
@@ -1289,7 +1311,6 @@ MonoBehaviour:
     - m_Data: 52832
     - m_Data: 52834
     - m_Data: 54076
-    - m_Data: 54082
     - m_Data: 54088
     - m_Data: 54096
     - m_Data: 54200
@@ -1297,6 +1318,7 @@ MonoBehaviour:
     - m_Data: 57540
     - m_Data: 63368
     - m_Data: 63372
+    - m_Data: 63376
     - m_Data: 63388
     - m_Data: 63392
     - m_Data: 63404
@@ -1338,9 +1360,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: -453806
-    m_LastClickedInstanceID: -453806
-    m_HadKeyboardFocusLastEvent: 0
+    - m_Data: 309740
+    m_LastClickedInstanceID: 309740
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 49186
     - m_Data: 60424
@@ -1449,7 +1471,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 112}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 119698
+  controlID: 143436
   draggingID: 0
 --- !u!114 &15
 MonoBehaviour:
@@ -1522,7 +1544,7 @@ MonoBehaviour:
     m_CachedPref: -151
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -453806
+  m_LastInspectedObjectInstanceID: 309740
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
