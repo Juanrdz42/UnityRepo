@@ -1,10 +1,10 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class CloudResponse : MonoBehaviour
 {
     private TextMeshPro textoNube;
+    public AudioClip popSound; 
 
     void Start() {
         textoNube = GetComponentInChildren<TextMeshPro>();
@@ -14,7 +14,12 @@ public class CloudResponse : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Guardamos la respuesta que eligió el jugador
+            // reproduce el sonido en la posición de la nube
+            if (popSound != null)
+            {
+                AudioSource.PlayClipAtPoint(popSound, transform.position);
+            }
+
             string respuestaElegida = textoNube.text;
             int idPregunta = GameData.PreguntaActualID;
 
@@ -23,10 +28,13 @@ public class CloudResponse : MonoBehaviour
             else
                 GameData.respuestasEncuesta.Add(idPregunta, respuestaElegida);
 
-            Debug.Log("El jugador eligió: " + respuestaElegida + " para la pregunta " + idPregunta);
+            ConfirmationPanel cm = Object.FindFirstObjectByType<ConfirmationPanel>(FindObjectsInactive.Include);
+            if (cm != null)
+            {
+                cm.ShowPanel(respuestaElegida);
+            }
 
-            // Regresamos a la escena principal
-            SceneManager.LoadScene("Mini1"); 
+            Destroy(gameObject);
         }
     }
 }

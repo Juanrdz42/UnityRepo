@@ -1,10 +1,14 @@
+using UnityEngine;
 using System.Collections.Generic;
 
 public static class GameData
 {
     public static int PreguntaActualID;
-    
-    // Aquí se guardan las respuestas. 
-    // Ejemplo: En la bandera 1 respondió "1-5 años"
     public static Dictionary<int, string> respuestasEncuesta = new Dictionary<int, string>();
+    public static Vector3 posicionRetorno; 
+    public static bool regresarDeNubes = false;
+
+    // Nueva lista para guardar qué banderas ya se usaron
+    public static List<int> banderasCompletadas = new List<int>();
+    public static bool puertaAbierta = false;
 }

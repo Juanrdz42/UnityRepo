@@ -19,7 +19,7 @@ public class Plane : MonoBehaviour
         // Aplicamos la velocidad
         rb.linearVelocity = new Vector2(0, moveInput * flySpeed);
         // Añade esto al Update del avión
-        float tilt = Input.GetAxisRaw("Vertical") * 20f; // 20 grados de inclinación
+        float tilt = Input.GetAxisRaw("Vertical") * 15f; // 20 grados de inclinación
         transform.rotation = Quaternion.Euler(0, 0, tilt);
     }
 }
