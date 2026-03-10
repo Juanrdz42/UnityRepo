@@ -28,21 +28,46 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
     void Start()
     {
-        timerText.gameObject.SetActive(false);
+        ResetRunState();
+
+        if (timerText != null)
+        {
+            timerText.gameObject.SetActive(false);
+            timerText.text = "Tiempo: " + Mathf.Ceil(gameTime).ToString();
+        }
 
         if (timerPanel != null)
             timerPanel.SetActive(false);
 
         if (resultText != null)
+        {
             resultText.gameObject.SetActive(false);
+            resultText.text = "";
+        }
+
+        if (countdownText != null)
+            countdownText.gameObject.SetActive(true);
 
         StartCoroutine(StartCountdown());
     }
 
+    void ResetRunState()
+    {
+        gameStarted = false;
+        gameEnded = false;
+        currentTime = gameTime;
+
+        if (QuestController_JuanRdz.Instance != null)
+        {
+            QuestController_JuanRdz.Instance.currentPhotos = 0;
+            QuestController_JuanRdz.Instance.targetPhotos = 3;
+            QuestController_JuanRdz.Instance.ResetScore();
+            QuestController_JuanRdz.Instance.SetObjective("Toma 3 fotos (0/3)");
+        }
+    }
+
     IEnumerator StartCountdown()
     {
-        countdownText.gameObject.SetActive(true);
-
         countdownText.text = "5";
         yield return new WaitForSeconds(1);
 
@@ -63,7 +88,11 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
         countdownText.gameObject.SetActive(false);
 
-        timerText.gameObject.SetActive(true);
+        if (timerText != null)
+        {
+            timerText.gameObject.SetActive(true);
+            timerText.text = "Tiempo: " + Mathf.Ceil(currentTime).ToString();
+        }
 
         if (timerPanel != null)
             timerPanel.SetActive(true);
@@ -77,11 +106,15 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         gameStarted = true;
         gameEnded = false;
         currentTime = gameTime;
+
+        if (timerText != null)
+            timerText.text = "Tiempo: " + Mathf.Ceil(currentTime).ToString();
     }
 
     void Update()
     {
-        if (!gameStarted || gameEnded) return;
+        if (!gameStarted || gameEnded)
+            return;
 
         if (QuestController_JuanRdz.Instance != null)
         {
@@ -97,7 +130,8 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         if (currentTime < 0)
             currentTime = 0;
 
-        timerText.text = "Tiempo: " + Mathf.Ceil(currentTime).ToString();
+        if (timerText != null)
+            timerText.text = "Tiempo: " + Mathf.Ceil(currentTime).ToString();
 
         if (currentTime <= 0)
         {
@@ -130,40 +164,79 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     }
 
     void EndGame()
+{
+    if (gameEnded)
+        return;
+
+    gameStarted = false;
+    gameEnded = true;
+
+    bool won = false;
+
+    if (QuestController_JuanRdz.Instance != null)
     {
-        gameStarted = false;
-        gameEnded = true;
+        QuestController_JuanRdz quest = QuestController_JuanRdz.Instance;
 
-        bool won = false;
+        won = quest.currentPhotos >= quest.targetPhotos;
 
-        if (QuestController_JuanRdz.Instance != null)
+        quest.RegisterTime(currentTime);
+
+        if (won)
         {
-            won = QuestController_JuanRdz.Instance.currentPhotos >= QuestController_JuanRdz.Instance.targetPhotos;
+            if (!quest.IsPostGameActive())
+            {
+                quest.ActivatePostGame();
+            }
+
+            quest.RegisterBiomeCompletion("terrestre");
+
+            // bonus de tiempo
+            if (currentTime > 30f)
+            {
+                quest.AddSpeedBonus();
+            }
         }
+    }
 
-        if (resultText != null)
-        {
-            resultText.gameObject.SetActive(true);
+    if (resultText != null)
+    {
+        resultText.gameObject.SetActive(true);
+        resultText.text = won ? "Ganaste" : "Perdiste";
+    }
 
-            if (won)
-                resultText.text = "Ganaste";
-            else
-                resultText.text = "Perdiste";
-        }
+    StartCoroutine(GoToResultsAfterDelay());
+}
 
-        Debug.Log(won ? "Ganaste" : "Perdiste");
+    IEnumerator GoToResultsAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Mini2_Resultados");
     }
 
     public void FinishGameAndGoToResults()
     {
+        if (gameEnded)
+            return;
+
         gameStarted = false;
         gameEnded = true;
 
-        if (QuestController_JuanRdz.Instance != null &&
-            QuestController_JuanRdz.Instance.currentPhotos >= QuestController_JuanRdz.Instance.targetPhotos &&
-            currentTime > 30f)
+        if (QuestController_JuanRdz.Instance != null)
         {
-            QuestController_JuanRdz.Instance.AddSpeedBonus();
+            QuestController_JuanRdz.Instance.RegisterTime(currentTime);
+
+            if (QuestController_JuanRdz.Instance.currentPhotos >= QuestController_JuanRdz.Instance.targetPhotos)
+            {
+                if (!QuestController_JuanRdz.Instance.IsPostGameActive())
+                {
+                    QuestController_JuanRdz.Instance.ActivatePostGame();
+                }
+
+                if (currentTime > 30f)
+                {
+                    QuestController_JuanRdz.Instance.AddSpeedBonus();
+                }
+            }
         }
 
         SceneManager.LoadScene("Mini2_Resultados");

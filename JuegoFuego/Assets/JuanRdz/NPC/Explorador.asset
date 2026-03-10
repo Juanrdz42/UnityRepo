@@ -16,10 +16,10 @@ MonoBehaviour:
   npcPortrait: {fileID: 21300000, guid: 8bbbdc64a79aa4c7fad407a203745d36, type: 3}
   dialogueLines:
   - "\xA1Hola, Bienvenido!"
-  - "\xBFComo estas?"
+  - "\xBFC\xF3mo estas?"
   - "\xBFTe gustan los biomas terrestres o acuaticos?"
-  - "Tienes Suerte, hay una secci\xF3n del bosque con biomas diversos"
-  - "Tienes Suerte, hay un lago muy grande aqu\xED"
+  - "Tienes Suerte, hay una secci\xF3n del bosque con biomas diversos."
+  - "Tienes Suerte, hay un lago muy grande aqu\xED."
   typingSpeed: 0.05
   voiceSound: {fileID: 8300000, guid: da212f78f9db343288681c147c3ab555, type: 3}
   voicePitch: 1

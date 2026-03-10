@@ -131,6 +131,7 @@ public class PhotoController : MonoBehaviour
         }
     }
 
+
     private void TakePhoto()
     {
         if (videoPlayer == null || currentSequence == null)
@@ -151,7 +152,7 @@ public class PhotoController : MonoBehaviour
             QuestController_JuanRdz.Instance.AddPhoto();
         }
 
-        if (result == PhotoResultType.Good || result == PhotoResultType.Perfect)
+        if (result != PhotoResultType.None)
         {
             if (currentSpot != null)
                 currentSpot.CompleteSpot();
@@ -159,6 +160,8 @@ public class PhotoController : MonoBehaviour
 
         StartCoroutine(ClosePhotoModeAfterDelay(2f));
     }
+
+    
 
     private PhotoResultType EvaluateTiming(float currentTime)
     {

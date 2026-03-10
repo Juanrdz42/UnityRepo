@@ -8,6 +8,7 @@ public class NPC : MonoBehaviour, IInteractable
     public NPCDialogue firstDialogueData;
     public NPCDialogue readyDialogueTerrestre;
     public NPCDialogue readyDialogueAcuatico;
+    public NPCDialogue postGameDialogueData;
 
     private NPCDialogue currentDialogueData;
     private DialogueController_JuanRdz dialogueUI;
@@ -21,6 +22,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     private bool shouldStartMissionAfterDialogue = false;
     private string pendingBiomeScene = "";
+
+    private Coroutine autoCloseCoroutine;
 
     void Start()
     {
@@ -44,14 +47,33 @@ public class NPC : MonoBehaviour, IInteractable
             return;
         }
 
-        if (HasChoiceAtCurrentLine())
-            return;
-
         if (isTyping)
         {
             StopAllCoroutines();
             dialogueUI.SetDialogueText(currentDialogueData.dialogueLines[dialogueIndex]);
             isTyping = false;
+
+            if (HasChoiceAtCurrentLine())
+            {
+                DialogueChoice currentChoice = GetChoiceForCurrentLine();
+                if (currentChoice != null)
+                    DisplayChoices(currentChoice);
+            }
+
+            if (IsEndLine(dialogueIndex))
+            {
+                autoCloseCoroutine = StartCoroutine(CloseDialogueAfterDelay(2f));
+            }
+
+            return;
+        }
+
+        if (HasChoiceAtCurrentLine())
+            return;
+
+        if (IsEndLine(dialogueIndex))
+        {
+            EndDialogue();
             return;
         }
 
@@ -60,6 +82,15 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void SelectDialogueToUse()
     {
+        if (QuestController_JuanRdz.Instance != null && QuestController_JuanRdz.Instance.IsPostGameActive())
+        {
+            if (postGameDialogueData != null)
+            {
+                currentDialogueData = postGameDialogueData;
+                return;
+            }
+        }
+
         if (!hasChosenBiome)
         {
             currentDialogueData = firstDialogueData;
@@ -81,7 +112,16 @@ public class NPC : MonoBehaviour, IInteractable
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        if (!hasChosenBiome && QuestController_JuanRdz.Instance != null)
+        shouldStartMissionAfterDialogue = false;
+        pendingBiomeScene = "";
+
+        if (QuestController_JuanRdz.Instance != null && QuestController_JuanRdz.Instance.IsPostGameActive())
+        {
+            QuestController_JuanRdz.Instance.ApplyPostGameObjective();
+        }
+
+    
+        else if (!hasChosenBiome && QuestController_JuanRdz.Instance != null)
         {
             QuestController_JuanRdz.Instance.OnTalkExplorer();
         }
@@ -117,7 +157,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void DisplayCurrentLine()
     {
-        StopAllCoroutines();
+        StopTypingAndAutoClose();
         dialogueUI.ClearChoices();
         StartCoroutine(TypeLine());
     }
@@ -146,6 +186,7 @@ public class NPC : MonoBehaviour, IInteractable
 
         if (IsEndLine(dialogueIndex))
         {
+            autoCloseCoroutine = StartCoroutine(CloseDialogueAfterDelay(2f));
             yield break;
         }
 
@@ -156,6 +197,19 @@ public class NPC : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(currentDialogueData.autoProgressDelay);
             NextLine();
         }
+    }
+
+    private IEnumerator CloseDialogueAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        EndDialogue();
+    }
+
+    private void StopTypingAndAutoClose()
+    {
+        StopAllCoroutines();
+        isTyping = false;
+        autoCloseCoroutine = null;
     }
 
     private DialogueChoice GetChoiceForCurrentLine()
@@ -202,6 +256,29 @@ public class NPC : MonoBehaviour, IInteractable
     private void ChooseOption(string choiceText, int nextIndex)
     {
         string lowerChoice = choiceText.ToLower();
+
+        if (QuestController_JuanRdz.Instance != null && QuestController_JuanRdz.Instance.IsPostGameActive())
+        {
+            if (lowerChoice.Contains("terrest"))
+            {
+                selectedBiome = "terrestre";
+                pendingBiomeScene = "Mini2_Bosque";
+                shouldStartMissionAfterDialogue = true;
+            }
+            else if (lowerChoice.Contains("acuat"))
+            {
+                selectedBiome = "acuatico";
+                pendingBiomeScene = "Mini2_Lago";
+                shouldStartMissionAfterDialogue = true;
+            }
+
+            dialogueIndex = nextIndex;
+            dialogueUI.ClearChoices();
+            DisplayCurrentLine();
+            return;
+        }
+
+        
 
         if (!hasChosenBiome)
         {
@@ -265,9 +342,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void EndDialogue()
     {
-        StopAllCoroutines();
+        StopTypingAndAutoClose();
         isDialogueActive = false;
-        isTyping = false;
         dialogueUI.ClearChoices();
         dialogueUI.SetDialogueText("");
         dialogueUI.ShowDialogueUI(false);

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544eda8c7530842a2b60bac0653d5ece, type: 3}
+  m_Name: Explorador_PostGame
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Explorador
+  npcPortrait: {fileID: 21300000, guid: 8bbbdc64a79aa4c7fad407a203745d36, type: 3}
+  dialogueLines:
+  - "\xA1Hola otra vez! Veo que sigues explorando por aqu\xED."
+  - "A\xFAn estoy reuniendo fotograf\xEDas de los biomas. \xBFQuieres ayudarme a
+    tomar algunas m\xE1s? "
+  - "\xA1Excelente! \xBFQu\xE9 bioma te interesa fotografiar hoy? "
+  - 'El bosque tiene muchos animales interesantes. '
+  - "\xBFEst\xE1s listo para comenzar? "
+  - "Perfecto, prep\xE1rate. "
+  - "El lago es perfecto para encontrar vida acu\xE1tica. "
+  - "\xBFEst\xE1s listo para comenzar? "
+  - "Perfecto, prep\xE1rate."
+  - "De acuerdo. Si quieres tomar m\xE1s fotos despu\xE9s, ven a hablar conmigo. "
+  typingSpeed: 0.05
+  voiceSound: {fileID: 8300000, guid: da212f78f9db343288681c147c3ab555, type: 3}
+  voicePitch: 1
+  autoProgressLines: 
+  endDialogueLines: 00000000000001000101
+  autoProgressDelay: 1.5
+  Choices:
+  - dialogueIndex: 1
+    choices:
+    - "S\xED, quiero ayudar"
+    - Ahora no
+    nextDialogueIndexes: 0200000007000000
+  - dialogueIndex: 2
+    choices:
+    - Bioma terrestre
+    - "Bioma acu\xE1tico"
+    nextDialogueIndexes: 0300000006000000
+  - dialogueIndex: 4
+    choices:
+    - "S\xED, estoy listo"
+    - "Mejor despu\xE9s"
+    nextDialogueIndexes: 0500000009000000
+  - dialogueIndex: 4
+    choices:
+    - "S\xED, estoy listo"
+    - "Mejor despu\xE9s"
+    nextDialogueIndexes: 0700000009000000
