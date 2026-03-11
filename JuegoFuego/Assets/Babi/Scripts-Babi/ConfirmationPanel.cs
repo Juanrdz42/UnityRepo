@@ -21,7 +21,13 @@ public class ConfirmationPanel : MonoBehaviour
     {
         // busca el panel de resultados y lo activa
         FinalResultsPanel panelFinal = Object.FindFirstObjectByType<FinalResultsPanel>(FindObjectsInactive.Include);
-        panelFinal.MostrarResultados();
+        if (panelFinal != null)
+        {
+            gameObject.SetActive(false); 
+            
+            // Y mostramos el nuevo
+            panelFinal.MostrarResultados();
+        }
     }
     else
     {
