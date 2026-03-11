@@ -119,8 +119,6 @@ public class NPC : MonoBehaviour, IInteractable
         {
             QuestController_JuanRdz.Instance.ApplyPostGameObjective();
         }
-
-    
         else if (!hasChosenBiome && QuestController_JuanRdz.Instance != null)
         {
             QuestController_JuanRdz.Instance.OnTalkExplorer();
@@ -172,6 +170,7 @@ public class NPC : MonoBehaviour, IInteractable
         foreach (char letter in currentLine)
         {
             dialogueUI.SetDialogueText(dialogueUI.dialogueText.text + letter);
+            SFXManager_JuanRdz.PlayVoice(firstDialogueData.voiceSound, firstDialogueData.voicePitch);
             yield return new WaitForSeconds(currentDialogueData.typingSpeed);
         }
 
@@ -265,7 +264,7 @@ public class NPC : MonoBehaviour, IInteractable
                 pendingBiomeScene = "Mini2_Bosque";
                 shouldStartMissionAfterDialogue = true;
             }
-            else if (lowerChoice.Contains("acuat"))
+            else if (lowerChoice.Contains("acu"))
             {
                 selectedBiome = "acuatico";
                 pendingBiomeScene = "Mini2_Lago";
@@ -277,8 +276,6 @@ public class NPC : MonoBehaviour, IInteractable
             DisplayCurrentLine();
             return;
         }
-
-        
 
         if (!hasChosenBiome)
         {
@@ -292,7 +289,7 @@ public class NPC : MonoBehaviour, IInteractable
                     QuestController_JuanRdz.Instance.OnBiomeChosen("terrestre");
                 }
             }
-            else if (lowerChoice.Contains("acuat"))
+            else if (lowerChoice.Contains("acu"))
             {
                 selectedBiome = "acuatico";
                 hasChosenBiome = true;

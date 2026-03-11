@@ -9,7 +9,6 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
-    public TextMeshProUGUI resultText;
 
     public GameObject timerPanel;
 
@@ -18,6 +17,7 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     private float currentTime;
     private bool gameStarted = false;
     private bool gameEnded = false;
+    private bool endSoundPlayed = false;
 
     public PhotoSpot[] photoSpots;
 
@@ -30,6 +30,8 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     {
         ResetRunState();
 
+        SFXManager_JuanRdz.StopAmbience();
+
         if (timerText != null)
         {
             timerText.gameObject.SetActive(false);
@@ -38,12 +40,6 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
         if (timerPanel != null)
             timerPanel.SetActive(false);
-
-        if (resultText != null)
-        {
-            resultText.gameObject.SetActive(false);
-            resultText.text = "";
-        }
 
         if (countdownText != null)
             countdownText.gameObject.SetActive(true);
@@ -56,6 +52,7 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         gameStarted = false;
         gameEnded = false;
         currentTime = gameTime;
+        endSoundPlayed = false;
 
         if (QuestController_JuanRdz.Instance != null)
         {
@@ -68,23 +65,25 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
     IEnumerator StartCountdown()
     {
+        SFXManager_JuanRdz.Play("Countdown");
+
         countdownText.text = "5";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         countdownText.text = "4";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         countdownText.text = "3";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         countdownText.text = "2";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         countdownText.text = "1";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         countdownText.text = "¡Vamos!";
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         countdownText.gameObject.SetActive(false);
 
@@ -107,6 +106,8 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         gameEnded = false;
         currentTime = gameTime;
 
+        SFXManager_JuanRdz.PlayAmbience("GameMusic");
+
         if (timerText != null)
             timerText.text = "Tiempo: " + Mathf.Ceil(currentTime).ToString();
     }
@@ -127,13 +128,19 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
         currentTime -= Time.deltaTime;
 
-        if (currentTime < 0)
-            currentTime = 0;
+        if (currentTime <= 1f && !endSoundPlayed)
+        {
+            SFXManager_JuanRdz.Play("End");
+            endSoundPlayed = true;
+        }
+
+        if (currentTime < 0f)
+            currentTime = 0f;
 
         if (timerText != null)
             timerText.text = "Tiempo: " + Mathf.Ceil(currentTime).ToString();
 
-        if (currentTime <= 0)
+        if (currentTime <= 0f)
         {
             EndGame();
         }
@@ -164,51 +171,49 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     }
 
     void EndGame()
-{
-    if (gameEnded)
-        return;
-
-    gameStarted = false;
-    gameEnded = true;
-
-    bool won = false;
-
-    if (QuestController_JuanRdz.Instance != null)
     {
-        QuestController_JuanRdz quest = QuestController_JuanRdz.Instance;
+        if (gameEnded)
+            return;
 
-        won = quest.currentPhotos >= quest.targetPhotos;
+        gameStarted = false;
+        gameEnded = true;
 
-        quest.RegisterTime(currentTime);
+        SFXManager_JuanRdz.StopAmbience();
 
-        if (won)
+        bool won = false;
+
+        if (QuestController_JuanRdz.Instance != null)
         {
-            if (!quest.IsPostGameActive())
-            {
-                quest.ActivatePostGame();
-            }
+            QuestController_JuanRdz quest = QuestController_JuanRdz.Instance;
 
-            quest.RegisterBiomeCompletion("terrestre");
+            won = quest.currentPhotos >= quest.targetPhotos;
 
-            // bonus de tiempo
-            if (currentTime > 30f)
+            quest.RegisterTime(currentTime);
+
+            if (won)
             {
-                quest.AddSpeedBonus();
+                if (!quest.IsPostGameActive())
+                {
+                    quest.ActivatePostGame();
+                }
+
+                quest.RegisterBiomeCompletion("terrestre");
+
+                if (currentTime > 30f)
+                {
+                    quest.AddSpeedBonus();
+                }
             }
         }
-    }
 
-    if (resultText != null)
-    {
-        resultText.gameObject.SetActive(true);
-        resultText.text = won ? "Ganaste" : "Perdiste";
+        StartCoroutine(GoToResultsAfterDelay());
     }
-
-    StartCoroutine(GoToResultsAfterDelay());
-}
 
     IEnumerator GoToResultsAfterDelay()
     {
+        PlayerPrefs.SetString("LastLevel", SceneManager.GetActiveScene().name);
+        PlayerPrefs.Save();
+
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Mini2_Resultados");
     }
@@ -232,12 +237,28 @@ public class ForestGameController_JuanRdz : MonoBehaviour
                     QuestController_JuanRdz.Instance.ActivatePostGame();
                 }
 
+                QuestController_JuanRdz.Instance.RegisterBiomeCompletion("terrestre");
+
                 if (currentTime > 30f)
                 {
                     QuestController_JuanRdz.Instance.AddSpeedBonus();
                 }
             }
         }
+
+        StartCoroutine(PlayEndAndLoadResults());
+    }
+
+    IEnumerator PlayEndAndLoadResults()
+    {
+        SFXManager_JuanRdz.StopAmbience();
+
+        AudioClip clip = SFXManager_JuanRdz.Play("End");
+
+        if (clip != null)
+            yield return new WaitForSeconds(clip.length);
+        else
+            yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene("Mini2_Resultados");
     }

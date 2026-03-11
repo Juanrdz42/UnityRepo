@@ -166,8 +166,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284002518
-  m_fontColor: {r: 0.8392157, g: 0.6901961, b: 0.34509805, a: 1}
+    rgba: 4280899116
+  m_fontColor: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -370,7 +370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MiniGameController_JuanRdz
   countdownText: {fileID: 1510503207}
   timerText: {fileID: 1561643901}
-  resultText: {fileID: 0}
   timerPanel: {fileID: 1504316742}
   gameTime: 60
   photoSpots:
@@ -424,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069e29db1c768484aa304298222c69f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhotoSpot_JuanRdz
-  birdVisual: {fileID: 2104714669}
+  spotVisual: {fileID: 2104714669}
   isActiveSpot: 0
   isCompleted: 0
   sequenceData: {fileID: 11400000, guid: bb30c394d6f6744f29f657eaa0b82cd3, type: 2}
@@ -595,7 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069e29db1c768484aa304298222c69f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhotoSpot_JuanRdz
-  birdVisual: {fileID: 746584980}
+  spotVisual: {fileID: 746584980}
   isActiveSpot: 0
   isCompleted: 0
   sequenceData: {fileID: 11400000, guid: 18d7550158b8141f291f833084fba851, type: 2}
@@ -645,56 +644,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &135553060
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 135553061}
-  - component: {fileID: 135553062}
-  m_Layer: 0
-  m_Name: DialogueController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &135553061
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135553060}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1098070578}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &135553062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135553060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e44b67adcd9d47f5b427e3cf9e66e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueController_JuanRdz
-  dialoguePanel: {fileID: 1709457090}
-  dialogueText: {fileID: 907548701}
-  nameText: {fileID: 2087885164}
-  portraitImage: {fileID: 110347012}
-  choiceContainer: {fileID: 1936131210}
-  choiceButtonPrefab: {fileID: 2839010796565918632, guid: a3659720a06ab4bbd9783d5fe1195fd7, type: 3}
 --- !u!1 &153936769
 GameObject:
   m_ObjectHideFlags: 0
@@ -50608,8 +50557,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279896413
-  m_fontColor: {r: 0.3647059, g: 0.03529412, b: 0.101960786, a: 1}
+    rgba: 4280899116
+  m_fontColor: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -51154,7 +51103,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1508673519}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MapPanelController, Assembly-CSharp
         m_MethodName: ClosePanel
         m_Mode: 1
@@ -51442,7 +51391,7 @@ Transform:
   m_GameObject: {fileID: 339706886}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21, y: 0.4, z: 0}
+  m_LocalPosition: {x: -0.20999941, y: 0.40000004, z: 0}
   m_LocalScale: {x: 1.9380233, y: 1.9380233, z: 1.9380233}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51849,6 +51798,7 @@ GameObject:
   - component: {fileID: 478434710}
   - component: {fileID: 478434709}
   - component: {fileID: 478434714}
+  - component: {fileID: 478434715}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -51869,6 +51819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 5
+  footstepInterval: 0.4
 --- !u!114 &478434710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52120,6 +52071,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.26, y: 1.9020565}
   m_EdgeRadius: 0
+--- !u!95 &478434715
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478434708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58d0cf768aa9f40cdb0e7aa8fd67b716, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &496482041
 GameObject:
   m_ObjectHideFlags: 0
@@ -52170,7 +52143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99607843, g: 0.8235294, b: 0.41960785, a: 1}
+  m_Color: {r: 0.9490196, g: 0.9529412, b: 0.9411765, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -52241,8 +52214,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestController_JuanRdz
   objectiveText: {fileID: 232899644}
   currentObjective: 
+  isPostGameActive: 0
+  postGameObjective: 
   currentPhotos: 0
   targetPhotos: 3
+  totalScore: 0
+  perfectPhotos: 0
+  goodPhotos: 0
+  badPhotos: 0
+  speedBonusEarned: 0
+  lastTimeRemaining: 0
+  bestTime: 0
+  bosqueCompleted: 0
+  lagoCompleted: 0
+  mini3Unlocked: 0
+  mini4Unlocked: 0
+  photoResults: 
 --- !u!1 &505393531
 GameObject:
   m_ObjectHideFlags: 0
@@ -67087,7 +67074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3647059, g: 0.03529412, b: 0.101960786, a: 1}
+  m_Color: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -67162,7 +67149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99607843, g: 0.8235294, b: 0.41960785, a: 1}
+  m_Color: {r: 0.9490196, g: 0.9529412, b: 0.9411765, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -67824,8 +67811,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1508673518}
-  - {fileID: 135553061}
   - {fileID: 499112879}
   - {fileID: 64580249}
   - {fileID: 125310164}
@@ -83376,7 +83361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.99607843, g: 0.8235294, b: 0.41960785, a: 1}
+  m_Color: {r: 0.94509804, g: 0.9490196, b: 0.9372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -83447,7 +83432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069e29db1c768484aa304298222c69f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhotoSpot_JuanRdz
-  birdVisual: {fileID: 339706886}
+  spotVisual: {fileID: 339706886}
   isActiveSpot: 0
   isCompleted: 0
   sequenceData: {fileID: 11400000, guid: cabcc992ec20e46f48e9bc59639d8f3c, type: 2}
@@ -83606,7 +83591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43529412, g: 0.06666667, b: 0.13333334, a: 1}
+  m_Color: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -83677,7 +83662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069e29db1c768484aa304298222c69f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhotoSpot_JuanRdz
-  birdVisual: {fileID: 252131699}
+  spotVisual: {fileID: 252131699}
   isActiveSpot: 0
   isCompleted: 0
   sequenceData: {fileID: 11400000, guid: cf0a051edeb3e4f4ea63c335da362607, type: 2}
@@ -83779,7 +83764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3647059, g: 0.03529412, b: 0.101960786, a: 1}
+  m_Color: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -83804,52 +83789,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504316742}
   m_CullTransparentMesh: 1
---- !u!1 &1508673517
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1508673518}
-  - component: {fileID: 1508673519}
-  m_Layer: 0
-  m_Name: MapController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1508673518
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508673517}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1098070578}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1508673519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508673517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f8c4bab32034732938a54e6665415b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapPanelController
-  panel: {fileID: 1735669407}
-  mapSceneName: Map
 --- !u!1 &1509092150
 GameObject:
   m_ObjectHideFlags: 0
@@ -84076,8 +84015,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284002518
-  m_fontColor: {r: 0.8392157, g: 0.6901961, b: 0.34509805, a: 1}
+    rgba: 4280964906
+  m_fontColor: {r: 0.16470589, g: 0.34117648, b: 0.16470589, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -84295,8 +84234,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280224619
-  m_fontColor: {r: 0.41960785, g: 0.043137256, b: 0.12156863, a: 1}
+    rgba: 4280899116
+  m_fontColor: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -107456,7 +107395,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1508673519}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MapPanelController, Assembly-CSharp
         m_MethodName: ReturnToMap
         m_Mode: 1
@@ -272421,8 +272360,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280488303
-  m_fontColor: {r: 0.43529412, g: 0.06666667, b: 0.13725491, a: 1}
+    rgba: 4280899116
+  m_fontColor: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -272646,6 +272585,7 @@ MonoBehaviour:
   firstDialogueData: {fileID: 11400000, guid: 26b49d2d771264b12af80853689d29b7, type: 2}
   readyDialogueTerrestre: {fileID: 11400000, guid: e583acccfe156407aba379a23c9fd32a, type: 2}
   readyDialogueAcuatico: {fileID: 11400000, guid: 3652ed19d03e943c9b478ba6942a3f07, type: 2}
+  postGameDialogueData: {fileID: 0}
 --- !u!1 &2087885162
 GameObject:
   m_ObjectHideFlags: 0
@@ -273057,7 +272997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.43529412, g: 0.06666667, b: 0.13333334, a: 1}
+  m_Color: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -73,6 +73,7 @@ public class QuestController_JuanRdz : MonoBehaviour
         {
             currentObjective = "Ve y habla con el explorador.";
         }
+
         LoadProgress();
         StartCoroutine(RefreshObjectiveTextNextFrame());
     }
@@ -90,7 +91,9 @@ public class QuestController_JuanRdz : MonoBehaviour
 
     private void RefreshObjectiveTextReference()
     {
-        if (SceneManager.GetActiveScene().name == "Mini2" && isPostGameActive)
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if ((sceneName == "Mini2" || sceneName == "Mini2_Lago") && isPostGameActive)
         {
             GameObject panelObject = GameObject.Find("ObjectivePanel");
 
@@ -116,10 +119,9 @@ public class QuestController_JuanRdz : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("No se encontró referencia al texto del objetivo en la escena " + SceneManager.GetActiveScene().name);
+            Debug.LogWarning("No se encontró referencia al texto del objetivo en la escena " + sceneName);
         }
     }
-
 
     public void SetObjective(string newObjective)
     {
@@ -247,7 +249,7 @@ public class QuestController_JuanRdz : MonoBehaviour
         switch (result)
         {
             case PhotoResultType.Perfect:
-                totalScore += 5;
+                totalScore += 3;
                 perfectPhotos++;
                 break;
 
@@ -266,7 +268,7 @@ public class QuestController_JuanRdz : MonoBehaviour
     {
         if (!speedBonusEarned)
         {
-            totalScore += 5;
+            totalScore += 1;
             speedBonusEarned = true;
         }
     }
@@ -281,7 +283,7 @@ public class QuestController_JuanRdz : MonoBehaviour
         }
     }
 
-    void CheckMiniGameUnlocks()
+    private void CheckMiniGameUnlocks()
     {
         if (bosqueCompleted || lagoCompleted)
         {
@@ -293,7 +295,7 @@ public class QuestController_JuanRdz : MonoBehaviour
         }
     }
 
-    void LoadProgress()
+    private void LoadProgress()
     {
         bosqueCompleted = PlayerPrefs.GetInt("bosqueCompleted", 0) == 1;
         lagoCompleted = PlayerPrefs.GetInt("lagoCompleted", 0) == 1;
@@ -306,14 +308,17 @@ public class QuestController_JuanRdz : MonoBehaviour
     {
         if (biome == "terrestre")
         {
+            bosqueCompleted = true;
             PlayerPrefs.SetInt("bosqueCompleted", 1);
         }
 
         if (biome == "acuatico")
         {
+            lagoCompleted = true;
             PlayerPrefs.SetInt("lagoCompleted", 1);
         }
 
+        CheckMiniGameUnlocks();
         PlayerPrefs.Save();
     }
 }

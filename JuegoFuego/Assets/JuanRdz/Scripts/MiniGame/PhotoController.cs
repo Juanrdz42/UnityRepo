@@ -52,7 +52,7 @@ public class PhotoController : MonoBehaviour
             resultText.text = "";
 
         if (takePhotoHint != null)
-            takePhotoHint.text = "";
+            takePhotoHint.gameObject.SetActive(false);
 
         if (videoPlayer != null)
         {
@@ -75,8 +75,6 @@ public class PhotoController : MonoBehaviour
 
     public void OpenPhotoGame(PhotoSpot spot)
     {
-        Debug.Log("OpenPhotoGame llamado");
-
         if (photoGamePanel != null && photoGamePanel.activeSelf)
             return;
 
@@ -97,6 +95,8 @@ public class PhotoController : MonoBehaviour
             return;
         }
 
+        SFXManager_JuanRdz.Play("TakingCameraOut");
+
         if (photoGamePanel != null)
             photoGamePanel.SetActive(true);
 
@@ -110,7 +110,7 @@ public class PhotoController : MonoBehaviour
             resultText.text = "";
 
         if (takePhotoHint != null)
-            takePhotoHint.text = "";
+            takePhotoHint.gameObject.SetActive(true);
 
         if (videoRawImage != null)
             videoRawImage.enabled = false;
@@ -125,12 +125,7 @@ public class PhotoController : MonoBehaviour
             videoPlayer.Prepare();
             StartCoroutine(PlayPreparedVideo());
         }
-        else
-        {
-            Debug.LogWarning("videoPlayer es null");
-        }
     }
-
 
     private void TakePhoto()
     {
@@ -138,6 +133,11 @@ public class PhotoController : MonoBehaviour
             return;
 
         photoTaken = true;
+        SFXManager_JuanRdz.Play("TakingPhoto");
+
+        if (takePhotoHint != null)
+            takePhotoHint.gameObject.SetActive(false);
+
         videoPlayer.Pause();
 
         float currentTime = (float)videoPlayer.time;
@@ -152,16 +152,13 @@ public class PhotoController : MonoBehaviour
             QuestController_JuanRdz.Instance.AddPhoto();
         }
 
-        if (result != PhotoResultType.None)
+        if (result != PhotoResultType.None && currentSpot != null)
         {
-            if (currentSpot != null)
-                currentSpot.CompleteSpot();
+            currentSpot.CompleteSpot();
         }
 
         StartCoroutine(ClosePhotoModeAfterDelay(2f));
     }
-
-    
 
     private PhotoResultType EvaluateTiming(float currentTime)
     {
@@ -175,9 +172,7 @@ public class PhotoController : MonoBehaviour
             if (currentTime >= window.startTime && currentTime <= window.endTime)
             {
                 if ((int)window.resultType > (int)bestResult)
-                {
                     bestResult = window.resultType;
-                }
             }
         }
 
@@ -202,6 +197,9 @@ public class PhotoController : MonoBehaviour
     private void OnVideoFinished(VideoPlayer vp)
     {
         videoFinished = true;
+
+        if (takePhotoHint != null)
+            takePhotoHint.gameObject.SetActive(false);
 
         if (!photoTaken)
         {
@@ -228,7 +226,7 @@ public class PhotoController : MonoBehaviour
             resultText.text = "";
 
         if (takePhotoHint != null)
-            takePhotoHint.text = "";
+            takePhotoHint.gameObject.SetActive(true);
 
         if (videoRawImage != null)
             videoRawImage.enabled = false;
@@ -260,7 +258,7 @@ public class PhotoController : MonoBehaviour
             resultText.text = "";
 
         if (takePhotoHint != null)
-            takePhotoHint.text = "";
+            takePhotoHint.gameObject.SetActive(false);
 
         if (videoRawImage != null)
             videoRawImage.enabled = false;
@@ -278,6 +276,12 @@ public class PhotoController : MonoBehaviour
             if (ForestGameController_JuanRdz.Instance != null)
             {
                 ForestGameController_JuanRdz.Instance.FinishGameAndGoToResults();
+                return;
+            }
+
+            if (LakeGameController_JuanRdz.Instance != null)
+            {
+                LakeGameController_JuanRdz.Instance.FinishGameAndGoToResults();
                 return;
             }
 

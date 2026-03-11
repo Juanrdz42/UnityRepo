@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class ResultsController_JuanRdz : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class ResultsController_JuanRdz : MonoBehaviour
             accuracy = (float)goodShots / totalShots * 100f;
         }
 
+        SFXManager_JuanRdz.StopAmbience();
+
         if (failedByTime)
         {
             if (failText != null)
@@ -52,7 +55,7 @@ public class ResultsController_JuanRdz : MonoBehaviour
             if (totalText != null)
             {
                 totalText.gameObject.SetActive(true);
-                totalText.text = "Total: 0";
+                totalText.text = "Total:  0";
             }
 
             if (accuracyText != null)
@@ -67,6 +70,7 @@ public class ResultsController_JuanRdz : MonoBehaviour
                 bestTimeText.text = "Mejor tiempo: " + quest.bestTime.ToString("0") + "s";
             }
 
+            StartCoroutine(PlayLoseAudio());
             return;
         }
 
@@ -100,7 +104,11 @@ public class ResultsController_JuanRdz : MonoBehaviour
         if (totalText != null)
         {
             totalText.gameObject.SetActive(true);
-            totalText.text = "Total: " + quest.totalScore;
+
+            if (quest.totalScore < 10)
+                totalText.text = "Total:  " + quest.totalScore;
+            else
+                totalText.text = "Total: " + quest.totalScore;
         }
 
         if (accuracyText != null)
@@ -114,6 +122,22 @@ public class ResultsController_JuanRdz : MonoBehaviour
             bestTimeText.gameObject.SetActive(true);
             bestTimeText.text = "Mejor tiempo: " + quest.bestTime.ToString("0") + "s";
         }
+
+        StartCoroutine(PlayWinAudio());
+    }
+
+    IEnumerator PlayWinAudio()
+    {
+        SFXManager_JuanRdz.Play("ResultsWin");
+        yield return new WaitForSeconds(2f);
+        SFXManager_JuanRdz.PlayAmbience("ResultsAmbiance");
+    }
+
+    IEnumerator PlayLoseAudio()
+    {
+        SFXManager_JuanRdz.Play("GameOver");
+        yield return new WaitForSeconds(2f);
+        SFXManager_JuanRdz.PlayAmbience("ResultsAmbiance");
     }
 
     private string GetPhotoLine(string label, int index, QuestController_JuanRdz quest)
@@ -126,10 +150,10 @@ public class ResultsController_JuanRdz : MonoBehaviour
         switch (result)
         {
             case PhotoResultType.Perfect:
-                return label + ": Perfecta +5";
+                return label + ": Perfecta +3";
 
             case PhotoResultType.Good:
-                return label + ": Buena +2";
+                return label + ": Buena +1";
 
             case PhotoResultType.Bad:
                 return label + ": Podría ser mejor +0";

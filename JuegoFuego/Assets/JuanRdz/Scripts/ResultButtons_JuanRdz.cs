@@ -3,13 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class ResultsButtons_JuanRdz : MonoBehaviour
 {
-    public string levelScene = "Mini2_Bosque";
     public string hubScene = "Mini2";
     public string mapScene = "Map";
 
     public void RetryLevel()
     {
-        SceneManager.LoadScene(levelScene);
+        string lastLevel = PlayerPrefs.GetString("LastLevel", "Mini2_Bosque");
+        SceneManager.LoadScene(lastLevel);
     }
 
     public void GoToHub()

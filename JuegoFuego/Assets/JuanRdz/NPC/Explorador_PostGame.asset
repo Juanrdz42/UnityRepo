@@ -27,29 +27,29 @@ MonoBehaviour:
   - "Perfecto, prep\xE1rate."
   - "De acuerdo. Si quieres tomar m\xE1s fotos despu\xE9s, ven a hablar conmigo. "
   typingSpeed: 0.05
-  voiceSound: {fileID: 8300000, guid: da212f78f9db343288681c147c3ab555, type: 3}
+  voiceSound: {fileID: 8300000, guid: e531dfa353ad4419981188fe1b6b1b48, type: 3}
   voicePitch: 1
-  autoProgressLines: 
-  endDialogueLines: 00000000000001000101
+  autoProgressLines: 00000001000001000000
+  endDialogueLines: 00000000000100000101
   autoProgressDelay: 1.5
   Choices:
   - dialogueIndex: 1
     choices:
-    - "S\xED, quiero ayudar"
+    - "S\xED"
     - Ahora no
-    nextDialogueIndexes: 0200000007000000
+    nextDialogueIndexes: 0200000009000000
   - dialogueIndex: 2
     choices:
-    - Bioma terrestre
-    - "Bioma acu\xE1tico"
+    - Terrestre
+    - "Acu\xE1tico"
     nextDialogueIndexes: 0300000006000000
   - dialogueIndex: 4
     choices:
-    - "S\xED, estoy listo"
-    - "Mejor despu\xE9s"
+    - "S\xED"
+    - "Despu\xE9s"
     nextDialogueIndexes: 0500000009000000
-  - dialogueIndex: 4
+  - dialogueIndex: 7
     choices:
-    - "S\xED, estoy listo"
+    - "S\xED"
     - "Mejor despu\xE9s"
-    nextDialogueIndexes: 0700000009000000
+    nextDialogueIndexes: 0800000009000000

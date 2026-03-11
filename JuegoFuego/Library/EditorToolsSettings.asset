@@ -60,7 +60,7 @@ MonoBehaviour:
     collapsed: 0
   - groupType: UnityEngine.BoxCollider2D, UnityEngine.Physics2DModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-    collapsed: 0
+    collapsed: 1
   - groupType: UnityEngine.EdgeCollider2D, UnityEngine.Physics2DModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     collapsed: 0

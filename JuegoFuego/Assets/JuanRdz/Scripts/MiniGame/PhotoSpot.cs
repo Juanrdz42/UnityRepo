@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PhotoSpot : MonoBehaviour, IInteractable
 {
-    public GameObject birdVisual;
+    public GameObject spotVisual;
     public bool isActiveSpot = false;
     public bool isCompleted = false;
     public PhotoSequenceData sequenceData;
@@ -17,8 +17,8 @@ public class PhotoSpot : MonoBehaviour, IInteractable
         isActiveSpot = active;
         isCompleted = false;
 
-        if (birdVisual != null)
-            birdVisual.SetActive(active);
+        if (spotVisual != null)
+            spotVisual.SetActive(active);
     }
 
     public void CompleteSpot()
@@ -26,8 +26,8 @@ public class PhotoSpot : MonoBehaviour, IInteractable
         isCompleted = true;
         isActiveSpot = false;
 
-        if (birdVisual != null)
-            birdVisual.SetActive(false);
+        if (spotVisual != null)
+            spotVisual.SetActive(false);
     }
 
     public bool CanInteract()
