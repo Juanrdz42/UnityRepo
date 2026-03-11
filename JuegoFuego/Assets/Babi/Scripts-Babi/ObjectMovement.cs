@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjectMovement : MonoBehaviour
 {
     public float speed = 10f; // que tan rapido van las nubes (o nose si le iba a poner otras cosas)
-    public float delayBeforeMove = 4f; // segundos que se espera
+    public float delayBeforeMove = 5f; // segundos que se espera
     private float timer = 0f;
 
     void Update()

@@ -20,6 +20,7 @@ public static class GameData // static porque no tengo que ponerlo en ningun obj
     public static int plantasGuardadas = 0; // cuantas plantas lleva
     public static Vector3 ultimoCheckpointPos; // loc de la ultima bandera que toco
     public static bool tieneCheckpoint = false; // checa si ya toco minimo una
+    public static bool yaVioInstrucciones = false;
 }
 
 // cuando unity carga una escena nueva normalmente borra todo lo que habia en la de antees, pero game data sobrevive a eso, para que las plantas no se pongan en 0 cuando regese

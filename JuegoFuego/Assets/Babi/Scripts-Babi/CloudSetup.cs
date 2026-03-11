@@ -12,18 +12,12 @@ public class CloudSetup : MonoBehaviour
         
         // si no lo pone pues regresa nada
         if (qm == null) {
-            Debug.LogError("¡AUXILIO! No encontré el QuestionManager");
             return;
         }
 
         // aqui le pide a la biblioteca(qm) que le de la pregunta que va a poner
         var data = qm.GetCurrentQuestion();
 
-        if (data == null) {
-        Debug.LogWarning("El QuestionManager no me dio ninguna pregunta. ID actual: " + GameData.PreguntaActualID);
-        } else {
-            Debug.Log("Pregunta encontrada: " + data.opcion1);
-        }
         // si encuentra la pregunta y hay suficientes texts empieza a poner las opciones en los texts de las 3 nubes
         if(data != null && textosNubes.Length >= 3) {
             textosNubes[0].text = data.opcion1;
