@@ -26,6 +26,9 @@ public class DialogueController_JuanRdz : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        if (playerMove == null)
+            playerMove = FindFirstObjectByType<PlayerMove>();
     }
 
     void Start()
@@ -40,7 +43,18 @@ public class DialogueController_JuanRdz : MonoBehaviour
             dialoguePanel.SetActive(show);
 
         if (playerMove != null)
-            playerMove.SetMovementEnabled(!show);
+        {
+            if (show)
+            {
+                playerMove.SetMovementEnabled(false);
+                playerMove.enabled = false;
+            }
+            else
+            {
+                playerMove.enabled = true;
+                playerMove.SetMovementEnabled(true);
+            }
+        }
     }
 
     public void SetNPCInfo(string npcName, Sprite npcPortrait)
@@ -61,9 +75,7 @@ public class DialogueController_JuanRdz : MonoBehaviour
     public void ClearChoices()
     {
         foreach (Transform child in choiceContainer)
-        {
             Destroy(child.gameObject);
-        }
     }
 
     public GameObject CreateChoiceButton(string choiceText, UnityEngine.Events.UnityAction onClick)

@@ -74,9 +74,7 @@ public class QuestController_JuanRdz : MonoBehaviour
     private void Start()
     {
         if (string.IsNullOrEmpty(currentObjective))
-        {
             currentObjective = "Ve y habla con el explorador.";
-        }
 
         LoadProgress();
         StartCoroutine(RefreshObjectiveTextNextFrame());
@@ -85,6 +83,9 @@ public class QuestController_JuanRdz : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        objectiveText = null;
+        pointsText = null;
+
         if (scene.name == "Mini2")
         {
             currentPhotos = 0;
@@ -117,16 +118,26 @@ public class QuestController_JuanRdz : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
         GameObject panelObject = GameObject.Find("ObjectivePanel");
 
-        if (sceneName == "Mini2_Resultados")
-        {
-            if (panelObject != null)
-                panelObject.SetActive(false);
+        bool shouldShowObjectivePanel = false;
 
-            return;
+        if (sceneName == "Mini2")
+        {
+            shouldShowObjectivePanel = !isPostGameActive;
+        }
+        else if (sceneName == "Mini2_Bosque" || sceneName == "Mini2_Lago")
+        {
+            shouldShowObjectivePanel = true;
+        }
+        else
+        {
+            shouldShowObjectivePanel = false;
         }
 
         if (panelObject != null)
-            panelObject.SetActive(true);
+            panelObject.SetActive(shouldShowObjectivePanel);
+
+        if (!shouldShowObjectivePanel)
+            return;
 
         if (objectiveText == null)
         {
@@ -168,11 +179,13 @@ public class QuestController_JuanRdz : MonoBehaviour
     {
         isPostGameActive = true;
         ApplyPostGameObjective();
+        StartCoroutine(RefreshObjectiveTextNextFrame());
     }
 
     public void DeactivatePostGame()
     {
         isPostGameActive = false;
+        StartCoroutine(RefreshObjectiveTextNextFrame());
     }
 
     public bool IsPostGameActive()

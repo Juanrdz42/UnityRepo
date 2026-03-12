@@ -17,7 +17,7 @@ public class PlayerMove : MonoBehaviour
     [Header("Movement Lock")]
     public bool canMove = true;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -28,18 +28,20 @@ public class PlayerMove : MonoBehaviour
     {
         Vector2 moveInput = canMove ? input : Vector2.zero;
 
-        rb.linearVelocity = moveInput * speed;
+        if (rb != null)
+            rb.linearVelocity = moveInput * speed;
 
         bool isWalking = moveInput.magnitude > 0;
-        animator.SetBool("IsWalking", isWalking);
 
-        if (moveInput.x > 0)
+        if (animator != null)
+            animator.SetBool("IsWalking", isWalking);
+
+        if (sprite != null)
         {
-            sprite.flipX = false;
-        }
-        else if (moveInput.x < 0)
-        {
-            sprite.flipX = true;
+            if (moveInput.x > 0)
+                sprite.flipX = false;
+            else if (moveInput.x < 0)
+                sprite.flipX = true;
         }
 
         HandleFootsteps(isWalking);
@@ -76,16 +78,12 @@ public class PlayerMove : MonoBehaviour
     public void SetMovementEnabled(bool enabled)
     {
         canMove = enabled;
+        input = Vector2.zero;
 
-        if (!canMove)
-        {
-            input = Vector2.zero;
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
 
-            if (rb != null)
-                rb.linearVelocity = Vector2.zero;
-
-            if (animator != null)
-                animator.SetBool("IsWalking", false);
-        }
+        if (animator != null)
+            animator.SetBool("IsWalking", false);
     }
 }

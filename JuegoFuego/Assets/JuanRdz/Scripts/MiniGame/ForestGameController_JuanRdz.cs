@@ -9,7 +9,6 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI timerText;
-
     public GameObject timerPanel;
 
     [Header("Player")]
@@ -32,6 +31,12 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     void Start()
     {
         ResetRunState();
+        StartCoroutine(BeginCountdownSequence());
+    }
+
+    IEnumerator BeginCountdownSequence()
+    {
+        yield return null;
 
         if (playerMove != null)
             playerMove.SetMovementEnabled(false);
@@ -94,7 +99,8 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         countdownText.text = "¡Vamos!";
         yield return new WaitForSeconds(1f);
 
-        countdownText.gameObject.SetActive(false);
+        if (countdownText != null)
+            countdownText.gameObject.SetActive(false);
 
         if (timerText != null)
         {
@@ -153,17 +159,13 @@ public class ForestGameController_JuanRdz : MonoBehaviour
             timerText.text = "Tiempo: " + Mathf.Ceil(currentTime).ToString();
 
         if (currentTime <= 0f)
-        {
             EndGame();
-        }
     }
 
     void ActivateRandomSpots()
     {
         foreach (PhotoSpot spot in photoSpots)
-        {
             spot.SetActiveSpot(false);
-        }
 
         System.Collections.Generic.List<PhotoSpot> shuffledSpots =
             new System.Collections.Generic.List<PhotoSpot>(photoSpots);
@@ -177,9 +179,7 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         }
 
         for (int i = 0; i < 3 && i < shuffledSpots.Count; i++)
-        {
             shuffledSpots[i].SetActiveSpot(true);
-        }
     }
 
     void EndGame()
@@ -195,29 +195,22 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
         SFXManager_JuanRdz.StopAmbience();
 
-        bool won = false;
-
         if (QuestController_JuanRdz.Instance != null)
         {
             QuestController_JuanRdz quest = QuestController_JuanRdz.Instance;
-
-            won = quest.currentPhotos >= quest.targetPhotos;
+            bool won = quest.currentPhotos >= quest.targetPhotos;
 
             quest.RegisterTime(currentTime);
 
             if (won)
             {
                 if (!quest.IsPostGameActive())
-                {
                     quest.ActivatePostGame();
-                }
 
                 quest.RegisterBiomeCompletion("terrestre");
 
                 if (currentTime > 30f)
-                {
                     quest.AddSpeedBonus();
-                }
             }
         }
 
@@ -251,16 +244,12 @@ public class ForestGameController_JuanRdz : MonoBehaviour
             if (QuestController_JuanRdz.Instance.currentPhotos >= QuestController_JuanRdz.Instance.targetPhotos)
             {
                 if (!QuestController_JuanRdz.Instance.IsPostGameActive())
-                {
                     QuestController_JuanRdz.Instance.ActivatePostGame();
-                }
 
                 QuestController_JuanRdz.Instance.RegisterBiomeCompletion("terrestre");
 
                 if (currentTime > 30f)
-                {
                     QuestController_JuanRdz.Instance.AddSpeedBonus();
-                }
             }
         }
 

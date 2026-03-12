@@ -23,15 +23,28 @@ public class MenuController_Juan : MonoBehaviour
         if (playerMovement != null)
             playerRb = playerMovement.GetComponent<Rigidbody2D>();
 
-        UpdatePlayerMovementState();
+        bool shouldOpenInstructions = false;
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "Mini2")
+        {
+            if (QuestController_JuanRdz.Instance == null ||
+                !QuestController_JuanRdz.Instance.IsPostGameActive())
+            {
+                shouldOpenInstructions = true;
+            }
+        }
+
+        if (shouldOpenInstructions && instructionsPanel != null)
+            instructionsPanel.SetActive(true);
+
+        UpdateUIState();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             ToggleMenu();
-        }
     }
 
     public void ToggleMenu()
@@ -44,7 +57,7 @@ public class MenuController_Juan : MonoBehaviour
         if (!newState && instructionsPanel != null)
             instructionsPanel.SetActive(false);
 
-        UpdatePlayerMovementState();
+        UpdateUIState();
     }
 
     public void OpenMenu()
@@ -52,7 +65,7 @@ public class MenuController_Juan : MonoBehaviour
         if (menuPanel != null)
             menuPanel.SetActive(true);
 
-        UpdatePlayerMovementState();
+        UpdateUIState();
     }
 
     public void CloseMenu()
@@ -63,7 +76,7 @@ public class MenuController_Juan : MonoBehaviour
         if (instructionsPanel != null)
             instructionsPanel.SetActive(false);
 
-        UpdatePlayerMovementState();
+        UpdateUIState();
     }
 
     public void OpenInstructions()
@@ -71,7 +84,7 @@ public class MenuController_Juan : MonoBehaviour
         if (instructionsPanel != null)
             instructionsPanel.SetActive(true);
 
-        UpdatePlayerMovementState();
+        UpdateUIState();
     }
 
     public void CloseInstructions()
@@ -79,15 +92,16 @@ public class MenuController_Juan : MonoBehaviour
         if (instructionsPanel != null)
             instructionsPanel.SetActive(false);
 
-        UpdatePlayerMovementState();
+        UpdateUIState();
     }
 
     public void GoToMap()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Map");
     }
 
-    private void UpdatePlayerMovementState()
+    private void UpdateUIState()
     {
         bool uiOpen = false;
 
@@ -98,9 +112,30 @@ public class MenuController_Juan : MonoBehaviour
             uiOpen = true;
 
         if (playerMovement != null)
-            playerMovement.enabled = !uiOpen;
+            playerMovement.SetMovementEnabled(!uiOpen);
 
         if (uiOpen && playerRb != null)
             playerRb.linearVelocity = Vector2.zero;
+
+        if (ShouldPauseGameTime())
+            Time.timeScale = uiOpen ? 0f : 1f;
+        else
+            Time.timeScale = 1f;
+    }
+
+    private bool ShouldPauseGameTime()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        return sceneName == "Mini2_Bosque" || sceneName == "Mini2_Lago";
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+    }
+
+    private void OnDestroy()
+    {
+        Time.timeScale = 1f;
     }
 }
