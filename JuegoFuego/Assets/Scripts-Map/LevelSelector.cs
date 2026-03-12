@@ -9,7 +9,6 @@ public class LevelSelector : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Cargando: " + nombreDeEscena);
             SceneManager.LoadScene(nombreDeEscena);
         }
     }
