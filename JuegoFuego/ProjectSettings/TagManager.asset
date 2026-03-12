@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Damage
-  - PlantText
-  - BouncePad
-  - BouncePad2
-  - Energy
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -16,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
+  - 
   - 
   - 
   - 
@@ -45,6 +40,24 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 1025511489
+    locked: 0
+  - name: WalkInFront
+    uniqueID: 2067843141
+    locked: 0
+  - name: Player
+    uniqueID: 2842284407
+    locked: 0
+  - name: Collision
+    uniqueID: 4052892845
+    locked: 0
+  - name: WalkBehind
+    uniqueID: 2012420503
+    locked: 0
+  - name: Decor
+    uniqueID: 3178148149
     locked: 0
   m_RenderingLayers:
   - Default

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544eda8c7530842a2b60bac0653d5ece, type: 3}
+  m_Name: Explorador_Acuatico
+  m_EditorClassIdentifier: Assembly-CSharp::NPCDialogue
+  npcName: Explorador
+  npcPortrait: {fileID: 21300000, guid: 8bbbdc64a79aa4c7fad407a203745d36, type: 3}
+  dialogueLines:
+  - Elegiste el bioma terrestre.
+  - "\xBFYa est\xE1s listo para comenzar el minijuego en el bosque?"
+  - "Perfecto. Prep\xE1rate para entrar al bosque y capturar tres fotograf\xEDas
+    a tiempo."
+  - "Est\xE1 bien. Vuelve conmigo cuando est\xE9s listo para comenzar."
+  typingSpeed: 0.05
+  voiceSound: {fileID: 8300000, guid: e531dfa353ad4419981188fe1b6b1b48, type: 3}
+  voicePitch: 1
+  autoProgressLines: 01000000
+  endDialogueLines: 00000101
+  autoProgressDelay: 1.5
+  Choices:
+  - dialogueIndex: 1
+    choices:
+    - "S\xED, iniciar"
+    - "Todav\xEDa no"
+    nextDialogueIndexes: 0200000003000000
