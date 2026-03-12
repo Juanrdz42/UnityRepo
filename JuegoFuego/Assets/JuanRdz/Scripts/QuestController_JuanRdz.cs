@@ -10,6 +10,7 @@ public class QuestController_JuanRdz : MonoBehaviour
 
     [Header("UI")]
     public TMP_Text objectiveText;
+    public TMP_Text pointsText;
 
     [Header("Quest State")]
     public string currentObjective;
@@ -22,8 +23,14 @@ public class QuestController_JuanRdz : MonoBehaviour
     public int currentPhotos = 0;
     public int targetPhotos = 3;
 
-    [Header("Score")]
-    public int totalScore = 0;
+    [Header("Global Score")]
+    public int playerPoints = 0;
+
+    [Header("Run Score")]
+    public int runScore = 0;
+    public bool runScoreCommitted = false;
+
+    [Header("Photo Results")]
     public int perfectPhotos = 0;
     public int goodPhotos = 0;
     public int badPhotos = 0;
@@ -36,9 +43,6 @@ public class QuestController_JuanRdz : MonoBehaviour
     [Header("Player Progress")]
     public bool bosqueCompleted = false;
     public bool lagoCompleted = false;
-
-    public bool mini3Unlocked = false;
-    public bool mini4Unlocked = false;
 
     public List<PhotoResultType> photoResults = new List<PhotoResultType>();
 
@@ -76,11 +80,24 @@ public class QuestController_JuanRdz : MonoBehaviour
 
         LoadProgress();
         StartCoroutine(RefreshObjectiveTextNextFrame());
+        StartCoroutine(RefreshPointsTextNextFrame());
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "Mini2")
+        {
+            currentPhotos = 0;
+            targetPhotos = 3;
+
+            if (isPostGameActive)
+                ApplyPostGameObjective();
+            else
+                SetObjective("Ve y habla con el explorador.");
+        }
+
         StartCoroutine(RefreshObjectiveTextNextFrame());
+        StartCoroutine(RefreshPointsTextNextFrame());
     }
 
     private IEnumerator RefreshObjectiveTextNextFrame()
@@ -89,38 +106,54 @@ public class QuestController_JuanRdz : MonoBehaviour
         RefreshObjectiveTextReference();
     }
 
+    private IEnumerator RefreshPointsTextNextFrame()
+    {
+        yield return null;
+        RefreshPointsTextReference();
+    }
+
     private void RefreshObjectiveTextReference()
     {
         string sceneName = SceneManager.GetActiveScene().name;
+        GameObject panelObject = GameObject.Find("ObjectivePanel");
 
-        if ((sceneName == "Mini2" || sceneName == "Mini2_Lago") && isPostGameActive)
+        if (sceneName == "Mini2_Resultados")
         {
-            GameObject panelObject = GameObject.Find("ObjectivePanel");
-
             if (panelObject != null)
                 panelObject.SetActive(false);
 
             return;
         }
 
+        if (panelObject != null)
+            panelObject.SetActive(true);
+
         if (objectiveText == null)
         {
             GameObject objectiveObject = GameObject.Find("QuestText");
-
             if (objectiveObject != null)
-            {
                 objectiveText = objectiveObject.GetComponent<TMP_Text>();
-            }
         }
 
         if (objectiveText != null)
-        {
             objectiveText.text = currentObjective;
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró referencia al texto del objetivo en la escena " + sceneName);
-        }
+    }
+
+    private void RefreshPointsTextReference()
+    {
+        pointsText = null;
+
+        GameObject pointsObject = GameObject.Find("Points");
+        if (pointsObject != null)
+            pointsText = pointsObject.GetComponent<TMP_Text>();
+
+        UpdatePointsUI();
+    }
+
+    public void UpdatePointsUI()
+    {
+        if (pointsText != null)
+            pointsText.text = playerPoints.ToString();
     }
 
     public void SetObjective(string newObjective)
@@ -128,9 +161,7 @@ public class QuestController_JuanRdz : MonoBehaviour
         currentObjective = newObjective;
 
         if (objectiveText != null)
-        {
             objectiveText.text = currentObjective;
-        }
     }
 
     public void ActivatePostGame()
@@ -178,24 +209,19 @@ public class QuestController_JuanRdz : MonoBehaviour
 
     public void OnMissionStart(string biome)
     {
-        if (isPostGameActive)
-        {
-            ApplyPostGameObjective();
-            return;
-        }
+        isPostGameActive = false;
 
         currentPhotos = 0;
         targetPhotos = 3;
-        ResetScore();
+        ResetRunScore();
 
         if (biome == "terrestre")
-        {
             SetObjective("Ve al bosque y toma 3 fotos.");
-        }
         else if (biome == "acuatico")
-        {
             SetObjective("Ve al lago y toma 3 fotos.");
-        }
+
+        UpdatePointsUI();
+        StartCoroutine(RefreshObjectiveTextNextFrame());
     }
 
     public void AddPhoto()
@@ -208,9 +234,7 @@ public class QuestController_JuanRdz : MonoBehaviour
         UpdatePhotoObjective();
 
         if (currentPhotos >= targetPhotos)
-        {
             CompleteMission("PhotoMission");
-        }
     }
 
     private void UpdatePhotoObjective()
@@ -221,9 +245,7 @@ public class QuestController_JuanRdz : MonoBehaviour
     public void CompleteMission(string missionId)
     {
         if (!completedMissions.Contains(missionId))
-        {
             completedMissions.Add(missionId);
-        }
     }
 
     public bool IsMissionCompleted(string missionId)
@@ -231,15 +253,16 @@ public class QuestController_JuanRdz : MonoBehaviour
         return completedMissions.Contains(missionId);
     }
 
-    public void ResetScore()
+    public void ResetRunScore()
     {
-        totalScore = 0;
+        runScore = 0;
         perfectPhotos = 0;
         goodPhotos = 0;
         badPhotos = 0;
         speedBonusEarned = false;
         photoResults.Clear();
         lastTimeRemaining = 0f;
+        runScoreCommitted = false;
     }
 
     public void AddPhotoScore(PhotoResultType result)
@@ -249,12 +272,12 @@ public class QuestController_JuanRdz : MonoBehaviour
         switch (result)
         {
             case PhotoResultType.Perfect:
-                totalScore += 3;
+                runScore += 3;
                 perfectPhotos++;
                 break;
 
             case PhotoResultType.Good:
-                totalScore += 2;
+                runScore += 2;
                 goodPhotos++;
                 break;
 
@@ -268,7 +291,7 @@ public class QuestController_JuanRdz : MonoBehaviour
     {
         if (!speedBonusEarned)
         {
-            totalScore += 1;
+            runScore += 1;
             speedBonusEarned = true;
         }
     }
@@ -278,30 +301,35 @@ public class QuestController_JuanRdz : MonoBehaviour
         lastTimeRemaining = timeRemaining;
 
         if (timeRemaining > bestTime)
-        {
             bestTime = timeRemaining;
-        }
     }
 
-    private void CheckMiniGameUnlocks()
+    public void CommitRunScoreIfWon(bool won)
     {
-        if (bosqueCompleted || lagoCompleted)
-        {
-            mini3Unlocked = true;
-            mini4Unlocked = true;
+        if (runScoreCommitted)
+            return;
 
-            PlayerPrefs.SetInt("mini3Unlocked", 1);
-            PlayerPrefs.SetInt("mini4Unlocked", 1);
+        if (won)
+        {
+            playerPoints += runScore;
+            SavePlayerPoints();
+            UpdatePointsUI();
         }
+
+        runScoreCommitted = true;
+    }
+
+    private void SavePlayerPoints()
+    {
+        PlayerPrefs.SetInt("playerPoints", playerPoints);
+        PlayerPrefs.Save();
     }
 
     private void LoadProgress()
     {
         bosqueCompleted = PlayerPrefs.GetInt("bosqueCompleted", 0) == 1;
         lagoCompleted = PlayerPrefs.GetInt("lagoCompleted", 0) == 1;
-
-        mini3Unlocked = PlayerPrefs.GetInt("mini3Unlocked", 0) == 1;
-        mini4Unlocked = PlayerPrefs.GetInt("mini4Unlocked", 0) == 1;
+        playerPoints = PlayerPrefs.GetInt("playerPoints", 0);
     }
 
     public void RegisterBiomeCompletion(string biome)
@@ -318,7 +346,6 @@ public class QuestController_JuanRdz : MonoBehaviour
             PlayerPrefs.SetInt("lagoCompleted", 1);
         }
 
-        CheckMiniGameUnlocks();
         PlayerPrefs.Save();
     }
 }

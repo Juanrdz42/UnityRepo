@@ -51,5 +51,5 @@ MonoBehaviour:
   - dialogueIndex: 7
     choices:
     - "S\xED"
-    - "Mejor despu\xE9s"
+    - "Despu\xE9s"
     nextDialogueIndexes: 0800000009000000

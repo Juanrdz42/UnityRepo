@@ -12,6 +12,9 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
     public GameObject timerPanel;
 
+    [Header("Player")]
+    public PlayerMove playerMove;
+
     public float gameTime = 60f;
 
     private float currentTime;
@@ -29,6 +32,9 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     void Start()
     {
         ResetRunState();
+
+        if (playerMove != null)
+            playerMove.SetMovementEnabled(false);
 
         SFXManager_JuanRdz.StopAmbience();
 
@@ -58,7 +64,7 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         {
             QuestController_JuanRdz.Instance.currentPhotos = 0;
             QuestController_JuanRdz.Instance.targetPhotos = 3;
-            QuestController_JuanRdz.Instance.ResetScore();
+            QuestController_JuanRdz.Instance.ResetRunScore();
             QuestController_JuanRdz.Instance.SetObjective("Toma 3 fotos (0/3)");
         }
     }
@@ -66,6 +72,9 @@ public class ForestGameController_JuanRdz : MonoBehaviour
     IEnumerator StartCountdown()
     {
         SFXManager_JuanRdz.Play("Countdown");
+
+        if (playerMove != null)
+            playerMove.SetMovementEnabled(false);
 
         countdownText.text = "5";
         yield return new WaitForSeconds(1f);
@@ -95,6 +104,9 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
         if (timerPanel != null)
             timerPanel.SetActive(true);
+
+        if (playerMove != null)
+            playerMove.SetMovementEnabled(true);
 
         StartGame();
         ActivateRandomSpots();
@@ -178,6 +190,9 @@ public class ForestGameController_JuanRdz : MonoBehaviour
         gameStarted = false;
         gameEnded = true;
 
+        if (playerMove != null)
+            playerMove.SetMovementEnabled(false);
+
         SFXManager_JuanRdz.StopAmbience();
 
         bool won = false;
@@ -225,6 +240,9 @@ public class ForestGameController_JuanRdz : MonoBehaviour
 
         gameStarted = false;
         gameEnded = true;
+
+        if (playerMove != null)
+            playerMove.SetMovementEnabled(false);
 
         if (QuestController_JuanRdz.Instance != null)
         {

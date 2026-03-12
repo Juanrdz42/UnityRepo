@@ -13,7 +13,7 @@ public class ResultsController_JuanRdz : MonoBehaviour
     public TextMeshProUGUI accuracyText;
     public TextMeshProUGUI bestTimeText;
 
-    void Start()
+    private void Start()
     {
         if (QuestController_JuanRdz.Instance == null)
         {
@@ -24,19 +24,25 @@ public class ResultsController_JuanRdz : MonoBehaviour
         QuestController_JuanRdz quest = QuestController_JuanRdz.Instance;
         bool failedByTime = quest.currentPhotos < quest.targetPhotos;
 
-        int goodShots = quest.perfectPhotos + quest.goodPhotos;
         int totalShots = quest.perfectPhotos + quest.goodPhotos + quest.badPhotos;
 
         float accuracy = 0f;
         if (totalShots > 0)
         {
-            accuracy = (float)goodShots / totalShots * 100f;
+            float weightedScore =
+                (quest.perfectPhotos * 1f) +
+                (quest.goodPhotos * 0.5f) +
+                (quest.badPhotos * 0f);
+
+            accuracy = (weightedScore / totalShots) * 100f;
         }
 
         SFXManager_JuanRdz.StopAmbience();
 
         if (failedByTime)
         {
+            quest.CommitRunScoreIfWon(false);
+
             if (failText != null)
                 failText.gameObject.SetActive(true);
 
@@ -52,16 +58,13 @@ public class ResultsController_JuanRdz : MonoBehaviour
             if (bonusText != null)
                 bonusText.gameObject.SetActive(false);
 
+            if (accuracyText != null)
+                accuracyText.gameObject.SetActive(false);
+
             if (totalText != null)
             {
                 totalText.gameObject.SetActive(true);
-                totalText.text = "Total:  0";
-            }
-
-            if (accuracyText != null)
-            {
-                accuracyText.gameObject.SetActive(true);
-                accuracyText.text = "Precisión: " + accuracy.ToString("0") + "%";
+                totalText.text = "Total: 0";
             }
 
             if (bestTimeText != null)
@@ -73,6 +76,8 @@ public class ResultsController_JuanRdz : MonoBehaviour
             StartCoroutine(PlayLoseAudio());
             return;
         }
+
+        quest.CommitRunScoreIfWon(true);
 
         if (failText != null)
             failText.gameObject.SetActive(false);
@@ -98,17 +103,13 @@ public class ResultsController_JuanRdz : MonoBehaviour
         if (bonusText != null)
         {
             bonusText.gameObject.SetActive(true);
-            bonusText.text = "Bono de tiempo: " + (quest.speedBonusEarned ? "+5" : "+0");
+            bonusText.text = "Bono de tiempo: " + (quest.speedBonusEarned ? "+1" : "+0");
         }
 
         if (totalText != null)
         {
             totalText.gameObject.SetActive(true);
-
-            if (quest.totalScore < 10)
-                totalText.text = "Total:  " + quest.totalScore;
-            else
-                totalText.text = "Total: " + quest.totalScore;
+            totalText.text = "Total: " + quest.runScore;
         }
 
         if (accuracyText != null)
@@ -126,14 +127,14 @@ public class ResultsController_JuanRdz : MonoBehaviour
         StartCoroutine(PlayWinAudio());
     }
 
-    IEnumerator PlayWinAudio()
+    private IEnumerator PlayWinAudio()
     {
         SFXManager_JuanRdz.Play("ResultsWin");
         yield return new WaitForSeconds(2f);
         SFXManager_JuanRdz.PlayAmbience("ResultsAmbiance");
     }
 
-    IEnumerator PlayLoseAudio()
+    private IEnumerator PlayLoseAudio()
     {
         SFXManager_JuanRdz.Play("GameOver");
         yield return new WaitForSeconds(2f);
@@ -151,13 +152,10 @@ public class ResultsController_JuanRdz : MonoBehaviour
         {
             case PhotoResultType.Perfect:
                 return label + ": Perfecta +3";
-
             case PhotoResultType.Good:
-                return label + ": Buena +1";
-
+                return label + ": Buena +2";
             case PhotoResultType.Bad:
                 return label + ": Podría ser mejor +0";
-
             default:
                 return label + ": Podría ser mejor +0";
         }

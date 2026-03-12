@@ -14,6 +14,9 @@ public class PlayerMove : MonoBehaviour
     public float footstepInterval = 0.4f;
     private float footstepTimer;
 
+    [Header("Movement Lock")]
+    public bool canMove = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,16 +26,18 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = input * speed;
+        Vector2 moveInput = canMove ? input : Vector2.zero;
 
-        bool isWalking = input.magnitude > 0;
+        rb.linearVelocity = moveInput * speed;
+
+        bool isWalking = moveInput.magnitude > 0;
         animator.SetBool("IsWalking", isWalking);
 
-        if (input.x > 0)
+        if (moveInput.x > 0)
         {
             sprite.flipX = false;
         }
-        else if (input.x < 0)
+        else if (moveInput.x < 0)
         {
             sprite.flipX = true;
         }
@@ -59,6 +64,28 @@ public class PlayerMove : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!canMove)
+        {
+            input = Vector2.zero;
+            return;
+        }
+
         input = context.ReadValue<Vector2>();
+    }
+
+    public void SetMovementEnabled(bool enabled)
+    {
+        canMove = enabled;
+
+        if (!canMove)
+        {
+            input = Vector2.zero;
+
+            if (rb != null)
+                rb.linearVelocity = Vector2.zero;
+
+            if (animator != null)
+                animator.SetBool("IsWalking", false);
+        }
     }
 }

@@ -19,6 +19,9 @@ public class PhotoController : MonoBehaviour
     [Header("Game UI")]
     public GameObject gameUI;
 
+    [Header("Player")]
+    public PlayerMove playerMove;
+
     [Header("Video")]
     public VideoPlayer videoPlayer;
     public RenderTexture renderTexture;
@@ -102,6 +105,9 @@ public class PhotoController : MonoBehaviour
 
         if (gameUI != null)
             gameUI.SetActive(false);
+
+        if (playerMove != null)
+            playerMove.SetMovementEnabled(false);
 
         if (retryButton != null)
             retryButton.SetActive(false);
@@ -253,6 +259,9 @@ public class PhotoController : MonoBehaviour
 
         if (gameUI != null)
             gameUI.SetActive(true);
+
+        if (playerMove != null)
+            playerMove.SetMovementEnabled(true);
 
         if (resultText != null)
             resultText.text = "";
