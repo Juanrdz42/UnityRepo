@@ -170,7 +170,15 @@ public class NPC : MonoBehaviour, IInteractable
         foreach (char letter in currentLine)
         {
             dialogueUI.SetDialogueText(dialogueUI.dialogueText.text + letter);
-            SFXManager_JuanRdz.PlayVoice(firstDialogueData.voiceSound, firstDialogueData.voicePitch);
+
+            if (SFXManager_JuanRdz.Instance != null)
+            {
+                SFXManager_JuanRdz.Instance.PlayVoice(
+                    currentDialogueData.voiceSound,
+                    currentDialogueData.voicePitch
+                );
+            }
+
             yield return new WaitForSeconds(currentDialogueData.typingSpeed);
         }
 
