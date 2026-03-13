@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default Brush
   m_EditorClassIdentifier: Unity.2D.Tilemap.Editor::UnityEditor.Tilemaps.GridBrush
   m_Cells:
-  - m_Tile: {fileID: 11400000, guid: 5e8a34651cea34fbe911d98fd5bbe366, type: 2}
+  - m_Tile: {fileID: 11400000, guid: 4537af29b0bcd42acbc41a4a8d9cce38, type: 2}
     m_Matrix:
       e00: 1
       e01: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
       e32: 0
       e33: 1
     m_Color: {r: 1, g: 1, b: 1, a: 1}
-  - m_Tile: {fileID: 11400000, guid: f5cdcb4f43fdc42afb508a8200f16f01, type: 2}
+  - m_Tile: {fileID: 11400000, guid: 1424ff2fce0a247fcab6b0b8b0ceb1b2, type: 2}
     m_Matrix:
       e00: 1
       e01: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
       e32: 0
       e33: 1
     m_Color: {r: 1, g: 1, b: 1, a: 1}
-  - m_Tile: {fileID: 11400000, guid: 5b1f1da63004e4ed181f54fab86091f5, type: 2}
+  - m_Tile: {fileID: 11400000, guid: 11a9f2721aad44b95991691868bacb6e, type: 2}
     m_Matrix:
       e00: 1
       e01: 0
@@ -71,8 +71,8 @@ MonoBehaviour:
       e33: 1
     m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_TileChangeDataList: []
-  m_Size: {x: 3, y: 1, z: 1}
-  m_Pivot: {x: 2, y: 0, z: 0}
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Pivot: {x: 0, y: 0, z: 0}
   m_CanChangeZPosition: 0
   m_FloodFillContiguousOnly: 1
   m_LastPickedLayout: 0

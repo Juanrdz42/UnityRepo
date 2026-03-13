@@ -80651,7 +80651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7907071215039149844, guid: b16bc4b50c15c470eb05a0de1d341ae1, type: 3}
+  m_Sprite: {fileID: -7907071215039149844, guid: 266778b6c693c4c1396d5c5ec0645bb1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -268437,15 +268437,15 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8457736859567379387, guid: 6e91ea9fa930e4b0c8b8de51e4d0abd5, type: 3}
+  m_Sprite: {fileID: 8457736859567379387, guid: f7fee51f1f2f84d5a8c74f5625823640, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.24, y: 2.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!1 &2123791438
 GameObject:
