@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mini1/CloudScene.unity
     guid: b2550714532e34e13884adbe19614dff
   - enabled: 1
-    path: Assets/Scenes/Mini2.unity
+    path: Assets/Scenes/Mini2_JuanRdz/Mini2.unity
     guid: 494716c6a277d40ec83c2fa5d1d5c4e5
   - enabled: 1
     path: Assets/Scenes/Mini3.unity
