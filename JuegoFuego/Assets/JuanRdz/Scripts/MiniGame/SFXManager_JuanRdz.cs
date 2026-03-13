@@ -1,26 +1,18 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class SFXManager_JuanRdz : MonoBehaviour
 {
     public static SFXManager_JuanRdz Instance;
 
-    [System.Serializable]
-    public class Sound
-    {
-        public string name;
-        public AudioClip clip;
-    }
+    [Header("References")]
+    [SerializeField] private SFXLibrary_JuanRdz sfxLibrary;
 
-    public Sound[] sounds;
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource ambienceSource;
+    [SerializeField] private AudioSource voiceSource;
 
-    private Dictionary<string, AudioClip> soundDictionary = new Dictionary<string, AudioClip>();
-
-    private AudioSource sfxSource;
-    private AudioSource ambienceSource;
-    private AudioSource voiceSource;
-
-    void Awake()
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -31,53 +23,59 @@ public class SFXManager_JuanRdz : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        sfxSource = gameObject.AddComponent<AudioSource>();
-        ambienceSource = gameObject.AddComponent<AudioSource>();
-        voiceSource = gameObject.AddComponent<AudioSource>();
+        if (sfxSource == null)
+            sfxSource = gameObject.AddComponent<AudioSource>();
 
+        if (ambienceSource == null)
+            ambienceSource = gameObject.AddComponent<AudioSource>();
+
+        if (voiceSource == null)
+            voiceSource = gameObject.AddComponent<AudioSource>();
+
+        sfxSource.playOnAwake = false;
+        sfxSource.loop = false;
+        sfxSource.spatialBlend = 0f;
+
+        ambienceSource.playOnAwake = false;
         ambienceSource.loop = true;
+        ambienceSource.spatialBlend = 0f;
 
-        foreach (Sound s in sounds)
-        {
-            if (!soundDictionary.ContainsKey(s.name) && s.clip != null)
-                soundDictionary.Add(s.name, s.clip);
-        }
+        voiceSource.playOnAwake = false;
+        voiceSource.loop = false;
+        voiceSource.spatialBlend = 0f;
     }
 
     public static AudioClip Play(string soundName)
     {
-        if (Instance == null)
+        if (Instance == null || Instance.sfxLibrary == null)
             return null;
 
-        if (!Instance.soundDictionary.ContainsKey(soundName))
-        {
-            Debug.LogWarning("Sound not found: " + soundName);
-            return null;
-        }
+        AudioClip clip = Instance.sfxLibrary.GetRandomClip(soundName);
 
-        AudioClip clip = Instance.soundDictionary[soundName];
+        if (clip == null)
+            return null;
+
         Instance.sfxSource.PlayOneShot(clip);
         return clip;
     }
 
     public static void PlayAmbience(string soundName)
     {
-        if (Instance == null)
+        if (Instance == null || Instance.sfxLibrary == null)
             return;
 
-        if (!Instance.soundDictionary.ContainsKey(soundName))
-        {
-            Debug.LogWarning("Sound not found: " + soundName);
-            return;
-        }
+        AudioClip clip = Instance.sfxLibrary.GetRandomClip(soundName);
 
-        Instance.ambienceSource.clip = Instance.soundDictionary[soundName];
+        if (clip == null)
+            return;
+
+        Instance.ambienceSource.clip = clip;
         Instance.ambienceSource.Play();
     }
 
     public static void StopAmbience()
     {
-        if (Instance == null)
+        if (Instance == null || Instance.ambienceSource == null)
             return;
 
         Instance.ambienceSource.Stop();
@@ -85,13 +83,10 @@ public class SFXManager_JuanRdz : MonoBehaviour
 
     public void PlayVoice(AudioClip clip, float pitch = 1f)
     {
-        if (clip == null || voiceSource == null)
+        if (voiceSource == null || clip == null)
             return;
 
         voiceSource.pitch = pitch;
         voiceSource.PlayOneShot(clip);
     }
 }
-
-
-

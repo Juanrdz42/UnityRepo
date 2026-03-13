@@ -21,7 +21,7 @@ MonoBehaviour:
   - "Tienes Suerte, hay una secci\xF3n del bosque con biomas diversos."
   - "Tienes Suerte, hay un lago muy grande aqu\xED."
   typingSpeed: 0.05
-  voiceSound: {fileID: 8300000, guid: ad349c48c682649c487697b641f246a8, type: 3}
+  voiceSound: {fileID: 8300000, guid: ddf83401cb170486eb8245e901a415ae, type: 3}
   voicePitch: 1
   autoProgressLines: 0101010000
   endDialogueLines: 0000000101
