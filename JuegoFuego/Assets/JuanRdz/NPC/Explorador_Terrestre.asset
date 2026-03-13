@@ -21,7 +21,7 @@ MonoBehaviour:
     de que termine el tiempo."
   - "Entiendo. Regresa cuando quieras comenzar la exploraci\xF3n acu\xE1tica."
   typingSpeed: 0.05
-  voiceSound: {fileID: 8300000, guid: e531dfa353ad4419981188fe1b6b1b48, type: 3}
+  voiceSound: {fileID: 8300000, guid: ad349c48c682649c487697b641f246a8, type: 3}
   voicePitch: 1
   autoProgressLines: 01000000
   endDialogueLines: 00000101

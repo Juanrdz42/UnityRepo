@@ -267358,14 +267358,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1987214286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41234d5a5cced4951ab526ada7206720, type: 3}
+  m_Script: {fileID: 11500000, guid: 7baa7ffa225a8495bbfb06d967fca9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SFXManager_JuanRdz
-  sfxSource: {fileID: 1987214290}
-  ambienceSource: {fileID: 1987214287}
-  randomPitchSource: {fileID: 1987214293}
-  voiceSource: {fileID: 1987214292}
-  sfxSlider: {fileID: 2085962652}
+  sounds: []
 --- !u!114 &1987214289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267378,37 +267374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d32b4258b444872b7a7208cd56adf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  SFXGroups:
-  - name: Ambience
-    audioClips:
-    - {fileID: 8300000, guid: b4e210147bac64948931a68ba4f6d852, type: 3}
-  - name: Walking
-    audioClips:
-    - {fileID: 8300000, guid: 4ee3478c6d1734cdcb2056d73ba6d279, type: 3}
-  - name: Countdown
-    audioClips:
-    - {fileID: 8300000, guid: 6186797c1f3344e64ba2101507638ba6, type: 3}
-  - name: GameMusic
-    audioClips:
-    - {fileID: 8300000, guid: 6f5dc3f154daf4e90b6c307275112eae, type: 3}
-  - name: End
-    audioClips:
-    - {fileID: 8300000, guid: c1b0246a22a484d779de2f55cba84c6a, type: 3}
-  - name: TakingCameraOut
-    audioClips:
-    - {fileID: 8300000, guid: 2221e0a33027848998c9f9a13470e738, type: 3}
-  - name: TakingPhoto
-    audioClips:
-    - {fileID: 8300000, guid: 14ba7fae34847435f9e69fc7b2b8ffc8, type: 3}
-  - name: ResultsWin
-    audioClips:
-    - {fileID: 8300000, guid: eeca896360256474982eb8ebf81e4fb1, type: 3}
-  - name: GameOver
-    audioClips:
-    - {fileID: 8300000, guid: 3ba9a8fd30fbf4ab69414361ce0d997e, type: 3}
-  - name: ResultsAmbiance
-    audioClips:
-    - {fileID: 8300000, guid: dcef55d022ff2407fa26a9e0a78ce502, type: 3}
 --- !u!82 &1987214290
 AudioSource:
   m_ObjectHideFlags: 0
