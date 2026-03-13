@@ -59374,7 +59374,7 @@ MonoBehaviour:
   pointsText: {fileID: 0}
   currentObjective: 
   isPostGameActive: 0
-  postGameObjective: 
+  postGameObjective: Fin
   currentPhotos: 0
   targetPhotos: 3
   playerPoints: 0
