@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Default Brush
   m_EditorClassIdentifier: Unity.2D.Tilemap.Editor::UnityEditor.Tilemaps.GridBrush
   m_Cells:
-  - m_Tile: {fileID: 11400000, guid: ec2cb19405d0947b5a9730a3d00ffaaf, type: 2}
+  - m_Tile: {fileID: 11400000, guid: e678e4a958c904f0a8b332ea373c427a, type: 2}
     m_Matrix:
       e00: 1
       e01: 0

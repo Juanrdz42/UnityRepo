@@ -36940,7 +36940,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 280
-      m_TileSpriteIndex: 4294967295
+      m_TileSpriteIndex: 294
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -36950,7 +36950,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 281
-      m_TileSpriteIndex: 4294967295
+      m_TileSpriteIndex: 295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -38080,7 +38080,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 290
-      m_TileSpriteIndex: 4294967295
+      m_TileSpriteIndex: 296
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -49519,6 +49519,12 @@ Tilemap:
     m_Data: {fileID: -1205464837, guid: 30c650a080588450db7b745bd3dc75e6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 183073361, guid: 30c650a080588450db7b745bd3dc75e6, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -1466079380, guid: 99b4de3c9eb9f4a00bcb35bbe806284b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -947638664, guid: 99b4de3c9eb9f4a00bcb35bbe806284b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 962776555, guid: 99b4de3c9eb9f4a00bcb35bbe806284b, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 4707
     m_Data:
@@ -64922,7 +64928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: daa4af5892a824025bc1d09a53a46d87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fedd5e1869a814e34b883a87c4e3c291, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -80975,7 +80981,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.34, y: 1.11}
-    newSize: {x: 6.74, y: 8.57}
+    newSize: {x: 1.34, y: 1.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -81031,12 +81037,12 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7168540986364394743, guid: 85e33d85436994e5289dec785a557b32, type: 3}
+  m_Sprite: {fileID: 7168540986364394743, guid: 6e0b43abc164c40a3b1c88a849d0a68f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.74, y: 8.57}
+  m_Size: {x: 1.34, y: 1.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -268439,7 +268445,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2123791438
 GameObject:
