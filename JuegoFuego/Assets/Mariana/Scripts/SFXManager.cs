@@ -4,7 +4,6 @@ public class SFXManager : MonoBehaviour
 {
     public AudioClip good;
     public AudioClip bad;
-    public AudioClip question;
     public AudioClip win; 
     public AudioClip lose; 
 
@@ -15,10 +14,6 @@ public class SFXManager : MonoBehaviour
     public void BadSound()
     {
         AudioSource.PlayClipAtPoint(bad, Camera.main.transform.position, 0.5f); // volumen al 50
-    }
-    public void QuestionSound()
-    {
-        AudioSource.PlayClipAtPoint(question, Camera.main.transform.position, 0.5f); // volumen al 50
     }
     public void WinSound()
     {
