@@ -4336,7 +4336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.17254902, g: 0.3372549, b: 0.16078432, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9725,10 +9725,10 @@ MonoBehaviour:
   maxPlatforms: 4
   minX: -15
   maxX: 15
-  minY: 1
-  maxY: 0
+  minY: -0.5
+  maxY: 0.5
   minDistanceBetween: 4
-  delayBetweenSpawns: 5
+  delayBetweenSpawns: 6
 --- !u!4 &1019475293
 Transform:
   m_ObjectHideFlags: 0
@@ -16590,7 +16590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0a7cbdb84794fd79ba5324f377798b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameControl
-  timeToWin: 49
+  timeToWin: 29
   uiController: {fileID: 324781535}
   sfxManager: {fileID: 1112539604}
   questionPanel: {fileID: 438002782}
@@ -16804,7 +16804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FollowingEnemy
   player: {fileID: 1041129301}
   value: 20
-  speed: 5
+  speed: 2.5
 --- !u!1 &1920464514
 GameObject:
   m_ObjectHideFlags: 0
