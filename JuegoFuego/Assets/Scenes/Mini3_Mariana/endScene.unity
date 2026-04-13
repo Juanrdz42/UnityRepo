@@ -9258,7 +9258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1322170599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10580,6 +10580,7 @@ MonoBehaviour:
   star: {fileID: 0}
   stars2: {fileID: 0}
   stars3: {fileID: 0}
+  mono: {fileID: 0}
 --- !u!1 &1517771677
 GameObject:
   m_ObjectHideFlags: 0
@@ -13490,6 +13491,7 @@ MonoBehaviour:
   star: {fileID: 350784815}
   stars2: {fileID: 1114321246}
   stars3: {fileID: 586346159}
+  mono: {fileID: 772877827}
 --- !u!4 &2075427715
 Transform:
   m_ObjectHideFlags: 0
