@@ -190,14 +190,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 537674435036948882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 765d59e6d823f95428eea3fcf7d29546, type: 3}
+  m_Script: {fileID: 11500000, guid: daaa8851621d848b79c21b12636b0654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   plants: 0
-  Plants_Text: {fileID: 0}
+  water: 0
+  plantsText: {fileID: 0}
+  waterText: {fileID: 0}
   health: 100
-  moveSpeed: 3
-  jumpForce: 3
+  moveSpeed: 8
+  jumpForce: 8
   extraJumpsValue: 1
   rig: {fileID: 4072548722522037919}
   healthImage: {fileID: 0}

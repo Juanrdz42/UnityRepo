@@ -8,10 +8,6 @@ TagManager:
   - BouncePad
   - PlantText
   - BouncePad2
-  - platform
-  - Enemy
-  - Trampa
-  - floor
   layers:
   - Default
   - TransparentFX
@@ -20,10 +16,10 @@ TagManager:
   - Water
   - UI
   - Ground
-  - Suelo
-  - Plat2
-  - Boss
-  - Player
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
