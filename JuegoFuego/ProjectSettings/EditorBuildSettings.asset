@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mini2_JuanRdz/Mini2.unity
     guid: 494716c6a277d40ec83c2fa5d1d5c4e5
   - enabled: 1
-    path: Assets/Scenes/Mini3.unity
+    path: Assets/Scenes/Mini3_Mariana/Mini3.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Mini2_JuanRdz/Mini2.unity
@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mini2_JuanRdz/Mini2_Lago.unity
     guid: 755dcdafaad86422597dbb5eec4954aa
+  - enabled: 1
+    path: Assets/Scenes/Mini3_Mariana/endScene.unity
+    guid: 06a99e14b00aa4b0886d279c1781168f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
