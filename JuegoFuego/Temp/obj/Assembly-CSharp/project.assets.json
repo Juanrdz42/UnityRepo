@@ -8,19 +8,19 @@
     ".NETStandard,Version=v2.1": []
   },
   "packageFolders": {
-    "/Users/marianaazamar/.nuget/packages/": {}
+    "C:\\Users\\100pa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/marianaazamar/Desktop/Unity/UnityRepo/JuegoFuego/Assembly-CSharp.csproj",
+      "projectUniqueName": "C:\\Users\\100pa\\OneDrive\\Documents\\GitHub\\UnityRepo2\\JuegoFuego\\Assembly-CSharp.csproj",
       "projectName": "Assembly-CSharp",
-      "projectPath": "/Users/marianaazamar/Desktop/Unity/UnityRepo/JuegoFuego/Assembly-CSharp.csproj",
-      "packagesPath": "/Users/marianaazamar/.nuget/packages/",
-      "outputPath": "/Users/marianaazamar/Desktop/Unity/UnityRepo/JuegoFuego/Temp/obj/Assembly-CSharp/",
+      "projectPath": "C:\\Users\\100pa\\OneDrive\\Documents\\GitHub\\UnityRepo2\\JuegoFuego\\Assembly-CSharp.csproj",
+      "packagesPath": "C:\\Users\\100pa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\100pa\\OneDrive\\Documents\\GitHub\\UnityRepo2\\JuegoFuego\\Temp\\obj\\Assembly-CSharp\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/marianaazamar/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\100pa\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
@@ -44,7 +44,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "netstandard2.1": {
@@ -60,7 +60,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
