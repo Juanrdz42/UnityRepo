@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 765d59e6d823f95428eea3fcf7d29546
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Plants_Text: {instanceID: 0}
+  - rig: {instanceID: 0}
+  - healthImage: {instanceID: 0}
+  - balaPrefab: {fileID: 101438702737005581, guid: f7a10d8502f524040816f99962dea56d, type: 3}
+  - puntoDisparo: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
